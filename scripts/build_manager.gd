@@ -3,8 +3,8 @@ extends Node2D
 
 @export var obstacle_scene: PackedScene
 @export var turret_scene: PackedScene
-@export var obstacle_cost: int = 30
-@export var turret_cost: int = 50
+@export var obstacle_cost: int = 70
+@export var turret_cost: int = 100
 
 @onready var obstacles = $"../Obstacles"
 @onready var turrets = $"../Turrets"

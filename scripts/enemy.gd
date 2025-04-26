@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 100.0
 @export var damage = 10.0
+@export var money_on_death = 10.0
 @export var target: Node2D
 
 
@@ -57,6 +58,7 @@ func _on_attack_range_body_exited(body):
 				
 func _on_hit_base():
 	Signals.base_take_damage.emit(damage)
+	Signals.enemy_died.emit(money_on_death)
 	queue_free()
 	
 	
@@ -72,3 +74,7 @@ func attack_obstacle(obstacle: Obstacle):
 		obstacle.take_damage(damage)
 	else:
 		obstacles_in_range.remove_at(0)
+
+func die():
+	Signals.enemy_died.emit(money_on_death)
+	queue_free()

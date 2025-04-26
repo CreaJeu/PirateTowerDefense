@@ -4,7 +4,11 @@ signal money_changed(new_amount: int)
 
 var money: int = 100
 
+func _ready() -> void:
+	Signals.enemy_died.connect(add_money)
+
 func add_money(amount: int):
+	print("Money!")
 	money += amount
 	money_changed.emit(money)
 
