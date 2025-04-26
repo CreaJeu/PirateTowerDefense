@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl5du0khkvx0c"]
+[gd_scene load_steps=4 format=3 uid="uid://bl5du0khkvx0c"]
 
+[ext_resource type="Script" uid="uid://idrk60cu26ny" path="res://scripts/obstacle.gd" id="1_drdry"]
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_sl1jc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aubd6"]
 size = Vector2(183, 33)
 
 [node name="Obstacle" type="StaticBody2D"]
+script = ExtResource("1_drdry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(81.5, 6.5)

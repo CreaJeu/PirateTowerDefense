@@ -23,4 +23,3 @@ func take_damage(amount: int):
 func on_base_destroyed():
 	print("Base destroyed! Game over!")
 	Signals.game_over.emit()
-	# You can add more like showing a game over screen here
