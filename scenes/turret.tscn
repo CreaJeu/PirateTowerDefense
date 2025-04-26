@@ -8,14 +8,12 @@
 radius = 517.193
 
 [node name="Turret" type="Area2D"]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_el7wl")
 projectile_scene = ExtResource("2_485p4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.785896, 0.117776, 0.364945, 1)
 texture_filter = 1
-scale = Vector2(12, 12)
 texture = ExtResource("3_485p4")
 
 [node name="FiringCooldown" type="Timer" parent="."]
