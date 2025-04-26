@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b61n3ww8i176b"]
+[gd_scene load_steps=16 format=4 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://d3555jk1lh0cg" path="res://assets/sprites/tile/Tilesets/Grass.png" id="6_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://4mvdwxigmoa3" path="res://assets/sprites/tile/Tilesets/Hills.png" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_85g3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85g3d"]
 texture = ExtResource("6_o6xl0")
@@ -211,6 +212,9 @@ enemy_scene = ExtResource("3_1bvp3")
 spawn_rate = 0.5
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Turret" parent="Enemies" instance=ExtResource("8_85g3d")]
+position = Vector2(706, 320)
 
 [node name="Obstacles" type="Node2D" parent="."]
 
