@@ -15,6 +15,7 @@ func _ready():
 
 func _process(delta):
 	global_position += direction * speed * delta
+	rotation_degrees += 10
 	
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
