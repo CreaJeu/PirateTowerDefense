@@ -4,6 +4,7 @@ extends Area2D
 @export var projectile_scene: PackedScene
 @export var fire_rate: float = 1.0 # seconds per shot
 @export var projectile_speed: float = 500.0
+@export var is_active: bool = true
 
 var enemies_in_range: Array[Node2D] = []
 
@@ -26,7 +27,7 @@ func _on_body_exited(body):
 		enemies_in_range.erase(body)
 
 func _on_fire_timer_timeout():
-	if enemies_in_range.is_empty():
+	if enemies_in_range.is_empty() or not is_active:
 		return
 
 	var target = get_closest_enemy()

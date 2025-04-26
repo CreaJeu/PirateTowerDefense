@@ -24,7 +24,12 @@ func start_build(scene: PackedScene, cost: int):
 	
 	ghost_instance = scene.instantiate()
 	ghost_instance.modulate = ghost_instance.modulate - Color(0, 0, 0, 0.5) # Make it semi-transparent
-	ghost_instance.process_mode = Node.PROCESS_MODE_DISABLED # Stop it from acting
+	ghost_instance.set_collision_layer(0)
+	ghost_instance.set_collision_mask(1) # Only detect "build_blockers" group (or whatever mask you use)
+	
+	if ghost_instance is Turret:
+		ghost_instance.is_active = false
+	
 	add_child(ghost_instance)
 
 func cancel_build():
@@ -51,22 +56,19 @@ func _process(delta):
 
 	if Input.is_action_just_released("place_object") and not get_viewport().gui_get_hovered_control():
 		print("Trying placing object")
-		try_place()
+		try_place(valid)
 		
 	if Input.is_action_just_released("cancel_build"):
 		cancel_build()
 
-func try_place():
+func try_place(is_blocked):
 	if not ghost_instance:
 		return
 	
 	# Get all bodies overlapping the ghost
-	var overlapping_bodies = ghost_instance.get_overlapping_bodies()
-	
-	for body in overlapping_bodies:
-		if body.is_in_group("build_blocker"):
-			print("Cannot build here, something is blocking!")
-			return
+	if not is_blocked:
+		print("Cannot build here, something is blocking!")
+		return
 	
 	# All clear to build!
 	if not Gamestate.spend_money(building_cost):
