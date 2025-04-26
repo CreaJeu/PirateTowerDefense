@@ -1,33 +1,32 @@
 [gd_scene load_steps=6 format=3 uid="uid://bl5du0khkvx0c"]
 
 [ext_resource type="Script" uid="uid://idrk60cu26ny" path="res://scripts/obstacle.gd" id="1_drdry"]
-[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_sl1jc"]
+[ext_resource type="Texture2D" uid="uid://m36f0an1ddpr" path="res://assets/sprites/structure/barricade3.png" id="2_cjuko"]
 [ext_resource type="PackedScene" uid="uid://curylix2vk8n3" path="res://scenes/health_bar.tscn" id="3_cjuko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aubd6"]
-size = Vector2(183, 33)
+size = Vector2(86.5, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drdry"]
-size = Vector2(184, 33)
+size = Vector2(87, 24)
 
 [node name="Obstacle" type="StaticBody2D"]
 script = ExtResource("1_drdry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(81.5, 6.5)
+position = Vector2(80.75, 7)
 shape = SubResource("RectangleShape2D_aubd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(81.5, 6.5)
-scale = Vector2(1.44531, 0.273438)
-texture = ExtResource("1_sl1jc")
+texture = ExtResource("2_cjuko")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [node name="ConstructionRestriction" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConstructionRestriction"]
-position = Vector2(82, 6.5)
+position = Vector2(81.5, 7)
 shape = SubResource("RectangleShape2D_drdry")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_cjuko")]
@@ -37,7 +36,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 14.0
-offset_top = -35.0
+offset_top = -22.0
 offset_right = 14.0
-offset_bottom = -35.0
+offset_bottom = -22.0
 size_flags_horizontal = 4

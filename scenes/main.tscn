@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
-[ext_resource type="PackedScene" path="res://scenes/base.tscn" id="4_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://cuy0rosgbajo6" path="res://scenes/base.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
 [ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
@@ -206,6 +206,14 @@ text = "Exit"
 position = Vector2(895, 547)
 script = ExtResource("12_a8y0u")
 
+[node name="NameTag" type="Label" parent="Pumpkin"]
+texture_filter = 1
+offset_left = -33.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = -14.0
+text = "Pumpkin"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pumpkin"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jkv2x")
@@ -215,13 +223,8 @@ frame_progress = 0.155488
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_jkv2x")
 
-[node name="NameTag" type="Label" parent="Pumpkin"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Pumpkin"
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(930, 519)
+position = Vector2(922, 493)
 zoom = Vector2(2, 2)
 limit_smoothed = true
 position_smoothing_enabled = true
