@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
 [ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://cw1waua8p1rsh" path="res://scenes/topbar.tscn" id="10_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://bqnrfsqrydyvq" path="res://scenes/topbar.tscn" id="10_ya4ey"]
 [ext_resource type="Script" uid="uid://7w84b3nw7nnc" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://cvmj2ud8tqdaf" path="res://assets/sprites/PUMPKIN2.png" id="13_a8y0u"]
@@ -202,7 +202,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Exit"
 
-[node name="Pumpkin" type="Node2D" parent="."]
+[node name="Pumpkin" type="StaticBody2D" parent="."]
 position = Vector2(895, 547)
 script = ExtResource("12_a8y0u")
 
