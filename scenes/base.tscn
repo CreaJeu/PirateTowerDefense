@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuy0rosgbajo6"]
+
+[ext_resource type="Script" uid="uid://bu1oidasd6666" path="res://scripts/base.gd" id="1_baglu"]
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="2_t45w4"]
+[ext_resource type="PackedScene" uid="uid://curylix2vk8n3" path="res://scenes/health_bar.tscn" id="3_t45w4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 67.2681
+
+[node name="Base" type="Area2D" groups=["Base"]]
+script = ExtResource("1_baglu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0745098, 1, 1)
+texture = ExtResource("2_t45w4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_t45w4")]
+offset_left = -65.0
+offset_top = -89.0
+offset_right = -65.0
+offset_bottom = -89.0

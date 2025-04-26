@@ -8,6 +8,7 @@ func _ready():
 	health = max_health
 	Signals.base_take_damage.connect(take_damage)
 	connect("body_entered", self._on_body_entered)
+	$HealthBar.setup(max_health)
 	
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
@@ -17,6 +18,7 @@ func _on_body_entered(body):
 func take_damage(amount: int):
 	health -= amount
 	print("Base HP:", health)
+	$HealthBar.lose_health(amount)
 	if health <= 0:
 		on_base_destroyed()
 
