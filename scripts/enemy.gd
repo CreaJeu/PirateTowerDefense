@@ -41,8 +41,21 @@ func _physics_process(delta):
 	if obstacles_in_range.is_empty():
 		var next_path_point = nav_agent.get_next_path_position()
 		var direction = (next_path_point - global_position).normalized()
+		
 		velocity = direction * speed
 		move_and_slide()
+		# Animation control
+		if abs(direction.x) > abs(direction.y):
+			if direction.x > 0:
+				$AnimatedSprite2D.play("right")
+			else:
+				$AnimatedSprite2D.play("left")
+		else:
+			if direction.y > 0:
+				$AnimatedSprite2D.play("down")
+			else:
+				$AnimatedSprite2D.play("up")
+
 				
 func _on_attack_range_body_entered(body):
 	if body is Obstacle:

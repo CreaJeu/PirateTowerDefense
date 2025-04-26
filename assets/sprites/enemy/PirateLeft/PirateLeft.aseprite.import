@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dcsxm18wqo3ne"
+path="res://.godot/imported/PirateLeft.aseprite-5061f9107ec32fac53d5938a1cd47a12.res"
+
+[deps]
+
+source_file="res://assets/sprites/enemy/PirateLeft/PirateLeft.aseprite"
+dest_files=["res://.godot/imported/PirateLeft.aseprite-5061f9107ec32fac53d5938a1cd47a12.res"]
+
+[params]
+

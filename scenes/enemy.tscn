@@ -1,14 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpxm4hhhbj3ab"]
+[gd_scene load_steps=21 format=3 uid="uid://dpxm4hhhbj3ab"]
 
 [ext_resource type="Script" uid="uid://kyurd04tghir" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://blmpjebb0t22y" path="res://assets/sprites/enemy/PirateDown/Pirate1Down.png" id="2_ipns3"]
 [ext_resource type="Texture2D" uid="uid://8p0sbxe12k5v" path="res://assets/sprites/enemy/PirateDown/Pirate2Down.png" id="3_8qclf"]
-[ext_resource type="Texture2D" uid="uid://ctllvidso375i" path="res://assets/sprites/enemy/PirateLeft.png" id="3_nenq2"]
-[ext_resource type="Texture2D" uid="uid://dyrcx1hjce1ud" path="res://assets/sprites/enemy/PirateRight.png" id="4_md484"]
 [ext_resource type="Texture2D" uid="uid://dhb4m58jq3owb" path="res://assets/sprites/enemy/PirateDown/Pirate3Down.png" id="4_w8i8w"]
-[ext_resource type="Texture2D" uid="uid://cb4bllx2rclno" path="res://assets/sprites/enemy/PirateUp.png" id="5_ipns3"]
 [ext_resource type="Texture2D" uid="uid://dptbrj20e7bpp" path="res://assets/sprites/enemy/PirateDown/Pirate4Down.png" id="5_otmr2"]
 [ext_resource type="Texture2D" uid="uid://cqxesngpmnba4" path="res://assets/sprites/enemy/PirateDown/Pirate5Down.png" id="6_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://xpx1iim41q27" path="res://assets/sprites/enemy/PirateLeft/PirateLeft1.png" id="7_shcg2"]
+[ext_resource type="Texture2D" uid="uid://b8ndrhf4qj6n6" path="res://assets/sprites/enemy/PirateLeft/PirateLeft2.png" id="8_ile5s"]
+[ext_resource type="Texture2D" uid="uid://dwubcebhwsst1" path="res://assets/sprites/enemy/PirateRight/PirateRight1.png" id="8_w8i8w"]
+[ext_resource type="Texture2D" uid="uid://vuna6hjcnh8" path="res://assets/sprites/enemy/PirateLeft/PirateLeft3.png" id="9_1x4g4"]
+[ext_resource type="Texture2D" uid="uid://bxkipiwf87mnr" path="res://assets/sprites/enemy/PirateRight/PirateRight2.png" id="9_otmr2"]
+[ext_resource type="Texture2D" uid="uid://d2nhv522ada85" path="res://assets/sprites/enemy/PirateRight/PirateRight3.png" id="10_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://ddqj5u44hr2wn" path="res://assets/sprites/enemy/PirateUp/PirateUp1.png" id="13_2pwtc"]
+[ext_resource type="Texture2D" uid="uid://bt0cuv2m3xmo4" path="res://assets/sprites/enemy/PirateUp/PirateUp2.png" id="14_rogs8"]
+[ext_resource type="Texture2D" uid="uid://dn45bk0vqj2gp" path="res://assets/sprites/enemy/PirateUp/PirateUp3.png" id="15_wrm80"]
+[ext_resource type="Texture2D" uid="uid://drqu37653rfmx" path="res://assets/sprites/enemy/PirateUp/PirateUp4.png" id="16_6awcb"]
+[ext_resource type="Texture2D" uid="uid://0dl8foq4h3an" path="res://assets/sprites/enemy/PirateUp/PirateUp5.png" id="17_wjec0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8qclf"]
 animations = [{
@@ -34,7 +42,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_nenq2")
+"texture": ExtResource("7_shcg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ile5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1x4g4")
 }],
 "loop": true,
 "name": &"left",
@@ -42,7 +56,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_md484")
+"texture": ExtResource("8_w8i8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_otmr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wtq4b")
 }],
 "loop": true,
 "name": &"right",
@@ -50,7 +70,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_ipns3")
+"texture": ExtResource("13_2pwtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rogs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wrm80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6awcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_wjec0")
 }],
 "loop": true,
 "name": &"up",
@@ -70,9 +102,8 @@ script = ExtResource("1_4gyqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8qclf")
-animation = &"down"
-frame = 1
-frame_progress = 0.454707
+animation = &"right"
+frame_progress = 0.162532
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false

@@ -1,17 +1,19 @@
-[gd_scene load_steps=19 format=4 uid="uid://cik8hijr55rcl"]
+[gd_scene load_steps=21 format=4 uid="uid://cik8hijr55rcl"]
 
 [ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dpfqlomfq3bxi" path="res://assets/UI/texture_atlas.png" id="1_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://d1dbwwgbehimg" path="res://scenes/ground.tscn" id="2_choun"]
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b8uv0kco1qmfv" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cuy0rosgbajo6" path="res://scenes/base.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
-[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cw1waua8p1rsh" path="res://scenes/topbar.tscn" id="10_ya4ey"]
-[ext_resource type="Script" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
+[ext_resource type="Script" uid="uid://7w84b3nw7nnc" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://cvmj2ud8tqdaf" path="res://assets/sprites/PUMPKIN2.png" id="13_a8y0u"]
 
@@ -77,6 +79,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkv2x"]
+size = Vector2(25, 25)
 
 [node name="Main" type="Node2D"]
 
@@ -206,5 +211,16 @@ script = ExtResource("12_a8y0u")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jkv2x")
 frame_progress = 0.155488
+
+[node name="Collision" type="CollisionShape2D" parent="Pumpkin"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_jkv2x")
+
+[node name="NameTag" type="Label" parent="Pumpkin"]
+offset_left = -68.0
+offset_top = 12.0
+offset_right = -28.0
+offset_bottom = 35.0
+text = "Pumpkin"
 
 [connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/GameOverMenu" method="_on_exit_button_pressed"]
