@@ -92,7 +92,7 @@ position = Vector2(782, 615)
 script = ExtResource("9_ya4ey")
 obstacle_scene = ExtResource("4_lquwl")
 turret_scene = ExtResource("8_tipki")
-construction_mask = NodePath("")
+construction_mask = NodePath("../ConstructionMask")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -178,6 +178,10 @@ shape = SubResource("RectangleShape2D_jkv2x")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(922, 493)
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1700
+limit_bottom = 1000
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("16_jbj1t")
