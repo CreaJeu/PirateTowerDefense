@@ -1,17 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpxm4hhhbj3ab"]
+[gd_scene load_steps=13 format=3 uid="uid://dpxm4hhhbj3ab"]
 
 [ext_resource type="Script" uid="uid://kyurd04tghir" path="res://scripts/enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_7k104"]
-[ext_resource type="Texture2D" uid="uid://by0ft2bcqtbrj" path="res://assets/sprites/enemy/Pirate.png" id="2_xwavj"]
+[ext_resource type="Texture2D" uid="uid://blmpjebb0t22y" path="res://assets/sprites/enemy/PirateDown/Pirate1Down.png" id="2_ipns3"]
+[ext_resource type="Texture2D" uid="uid://8p0sbxe12k5v" path="res://assets/sprites/enemy/PirateDown/Pirate2Down.png" id="3_8qclf"]
 [ext_resource type="Texture2D" uid="uid://ctllvidso375i" path="res://assets/sprites/enemy/PirateLeft.png" id="3_nenq2"]
 [ext_resource type="Texture2D" uid="uid://dyrcx1hjce1ud" path="res://assets/sprites/enemy/PirateRight.png" id="4_md484"]
+[ext_resource type="Texture2D" uid="uid://dhb4m58jq3owb" path="res://assets/sprites/enemy/PirateDown/Pirate3Down.png" id="4_w8i8w"]
 [ext_resource type="Texture2D" uid="uid://cb4bllx2rclno" path="res://assets/sprites/enemy/PirateUp.png" id="5_ipns3"]
+[ext_resource type="Texture2D" uid="uid://dptbrj20e7bpp" path="res://assets/sprites/enemy/PirateDown/Pirate4Down.png" id="5_otmr2"]
+[ext_resource type="Texture2D" uid="uid://cqxesngpmnba4" path="res://assets/sprites/enemy/PirateDown/Pirate5Down.png" id="6_wtq4b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8qclf"]
 animations = [{
 "frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_ipns3")
+}, {
 "duration": 1.0,
-"texture": ExtResource("2_xwavj")
+"texture": ExtResource("3_8qclf")
+}, {
+"duration": 1.2,
+"texture": ExtResource("4_w8i8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_otmr2")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_wtq4b")
 }],
 "loop": true,
 "name": &"down",
@@ -43,30 +58,30 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
-radius = 66.2722
+radius = 15.1327
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
-radius = 136.707
+radius = 17.1172
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_4gyqm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8qclf")
-animation = &"up"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7k104")
+animation = &"down"
+frame = 1
+frame_progress = 0.454707
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_4gyqm")
 
 [node name="MeleeRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
+visible = false
 shape = SubResource("CircleShape2D_md0e3")
 
 [node name="MeleeAttackTimer" type="Timer" parent="."]
