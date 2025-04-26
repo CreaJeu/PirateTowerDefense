@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpfqlomfq3bxi"
-path="res://.godot/imported/texture_atlas.png-0e9d841158f6021ee088d1ae6e465777.ctex"
+uid="uid://cwpampbutyajg"
+path="res://.godot/imported/healthFilled.png-894341004d1f723cf7abcb98bc5568b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/texture_atlas.png"
-dest_files=["res://.godot/imported/texture_atlas.png-0e9d841158f6021ee088d1ae6e465777.ctex"]
+source_file="res://assets/UI/healthFilled.png"
+dest_files=["res://.godot/imported/healthFilled.png-894341004d1f723cf7abcb98bc5568b7.ctex"]
 
 [params]
 

@@ -1,15 +1,14 @@
-[gd_scene load_steps=22 format=4 uid="uid://b61n3ww8i176b"]
+[gd_scene load_steps=20 format=4 uid="uid://cik8hijr55rcl"]
 
-[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b8uv0kco1qmfv" path="res://scenes/water.tscn" id="1_85g3d"]
-[ext_resource type="Texture2D" uid="uid://dpfqlomfq3bxi" path="res://assets/sprites/texture_atlas.png" id="1_eb6dy"]
-[ext_resource type="PackedScene" path="res://scenes/ground.tscn" id="2_choun"]
+[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dpfqlomfq3bxi" path="res://assets/UI/texture_atlas.png" id="1_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://d1dbwwgbehimg" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://bu1oidasd6666" path="res://scripts/base.gd" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cuy0rosgbajo6" path="res://scenes/base.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
-[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cw1waua8p1rsh" path="res://scenes/topbar.tscn" id="10_ya4ey"]
 [ext_resource type="Script" uid="uid://7w84b3nw7nnc" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
@@ -66,9 +65,6 @@ vertices = PackedVector2Array(1083.37, 595.18, 13.0078, 649.469, 13.9766, 15.968
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(58.5026, 48.8816, 1093.69, 48.8816, 1092.48, 604.746, 66.3175, 591.932)])
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
-radius = 67.2681
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_jkv2x"]
 animations = [{
 "frames": [{
@@ -105,17 +101,8 @@ position = Vector2(-7.31744, -11.1116)
 scale = Vector2(1.66347, 1.63889)
 navigation_polygon = SubResource("NavigationPolygon_1bvp3")
 
-[node name="Base" type="Area2D" parent="." groups=["Base"]]
+[node name="Base" parent="." instance=ExtResource("4_a8y0u")]
 position = Vector2(978, 542)
-script = ExtResource("2_lquwl")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Base"]
-modulate = Color(1, 0.0745098, 1, 1)
-texture = ExtResource("1_0xm2m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
-shape = SubResource("CircleShape2D_7mycd")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("2_h2yge")
