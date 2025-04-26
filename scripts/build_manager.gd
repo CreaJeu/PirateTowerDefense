@@ -75,6 +75,17 @@ func try_place():
 	
 	var real_instance = building_scene.instantiate()
 	real_instance.global_position = ghost_instance.global_position
+	real_instance.rotation = ghost_instance.rotation
 	obstacles.add_child(real_instance)
 		
 	cancel_build()
+
+func _unhandled_input(event):
+	if not build_mode and ghost_instance != null:
+		return
+	
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			ghost_instance.rotation += deg_to_rad(15) # Rotate 15 degrees clockwise
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			ghost_instance.rotation -= deg_to_rad(15) # Rotate 15 degrees counter-clockwise
