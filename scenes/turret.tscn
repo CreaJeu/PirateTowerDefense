@@ -15,7 +15,6 @@ script = ExtResource("1_el7wl")
 projectile_scene = ExtResource("2_485p4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.785896, 0.117776, 0.364945, 1)
 texture_filter = 1
 texture = ExtResource("3_485p4")
 
