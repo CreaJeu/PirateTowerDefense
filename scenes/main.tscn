@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://b61n3ww8i176b"]
+[gd_scene load_steps=22 format=4 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
-[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://b8uv0kco1qmfv" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dpfqlomfq3bxi" path="res://assets/sprites/texture_atlas.png" id="1_eb6dy"]
 [ext_resource type="PackedScene" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
@@ -81,6 +81,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkv2x"]
+size = Vector2(25, 25)
 
 [node name="Main" type="Node2D"]
 
@@ -219,5 +222,16 @@ script = ExtResource("12_a8y0u")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jkv2x")
 frame_progress = 0.155488
+
+[node name="Collision" type="CollisionShape2D" parent="Pumpkin"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_jkv2x")
+
+[node name="NameTag" type="Label" parent="Pumpkin"]
+offset_left = -68.0
+offset_top = 12.0
+offset_right = -28.0
+offset_bottom = 35.0
+text = "Pumpkin"
 
 [connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/GameOverMenu" method="_on_exit_button_pressed"]
