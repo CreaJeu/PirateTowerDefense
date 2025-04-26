@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cirio4trygpgn"
+path="res://.godot/imported/banana.aseprite-2bc13dac536df75b56930f9e4f53db13.res"
+
+[deps]
+
+source_file="res://assets/sprites/projectiles/banana.aseprite"
+dest_files=["res://.godot/imported/banana.aseprite-2bc13dac536df75b56930f9e4f53db13.res"]
+
+[params]
+
