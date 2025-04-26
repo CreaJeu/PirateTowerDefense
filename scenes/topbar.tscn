@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://nslncu55hvxe"]
+
+[ext_resource type="Script" uid="uid://xj0n2qew2oyj" path="res://scripts/topbar.gd" id="1_h2uq7"]
+[ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="2_qous1"]
+[ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="3_iwmr3"]
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="4_eexb2"]
+
+[node name="Topbar" type="PanelContainer"]
+offset_right = 1920.0
+offset_bottom = 101.0
+script = ExtResource("1_h2uq7")
+obstacle_scene = ExtResource("2_qous1")
+turret_scene = ExtResource("3_iwmr3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MoneyMCont" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MoneyMCont"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MoneyMCont/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MoneyMCont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_eexb2")
+expand_mode = 2
+
+[node name="LabelMoney" type="RichTextLabel" parent="HBoxContainer/MoneyMCont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center][b]100"
+vertical_alignment = 1
+
+[node name="Empty" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="SingeMcont" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/SingeMcont"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/SingeMcont/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/SingeMcont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_eexb2")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/SingeMcont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "Singe"
+
+[node name="ObstacleMcont" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/ObstacleMcont"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ObstacleMcont/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_eexb2")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "Obstacle"

@@ -24,6 +24,7 @@ func initialize(target_node: Node2D, start_position: Vector2):
 	
 func _ready():
 	add_to_group("enemies")
+	$Hitbox.add_to_group("build_blocker")
 	enemy_hit_base.connect(_on_hit_base)
 	attack_range.body_entered.connect(_on_attack_range_body_entered)
 	attack_range.body_exited.connect(_on_attack_range_body_exited)

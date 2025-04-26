@@ -10,6 +10,7 @@ var enemies_in_range: Array[Node2D] = []
 @onready var fire_timer: Timer = $FiringCooldown
 
 func _ready():
+	$BuildRestriction.add_to_group("build_blocker")
 	connect("body_entered", _on_body_entered)
 	connect("body_exited", _on_body_exited)
 	fire_timer.wait_time = fire_rate

@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://cik8hijr55rcl"]
+[gd_scene load_steps=14 format=3 uid="uid://cik8hijr55rcl"]
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b8uv0kco1qmfv" path="res://scenes/water.tscn" id="1_85g3d"]
-[ext_resource type="PackedScene" uid="uid://d1dbwwgbehimg" path="res://scenes/ground.tscn" id="2_choun"]
+[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://bu1oidasd6666" path="res://scripts/base.gd" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
-[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://nslncu55hvxe" path="res://scenes/topbar.tscn" id="10_ya4ey"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1bvp3"]
 vertices = PackedVector2Array(1083.37, 595.18, 13.0078, 649.469, 13.9766, 15.9688, 1140.96, 13.0234)
@@ -71,7 +73,25 @@ position = Vector2(927, 342)
 [node name="Turret3" parent="Turrets" instance=ExtResource("8_tipki")]
 position = Vector2(782, 615)
 
-[node name="GameOverMenu" type="Control" parent="."]
+[node name="BuildManager" type="Node2D" parent="."]
+script = ExtResource("9_ya4ey")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -978.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Topbar" parent="CanvasLayer/UI" node_paths=PackedStringArray("build_manager") instance=ExtResource("10_ya4ey")]
+layout_mode = 0
+build_manager = NodePath("../../../BuildManager")
+
+[node name="GameOverMenu" type="Control" parent="CanvasLayer"]
 process_mode = 2
 visible = false
 layout_mode = 3
@@ -82,15 +102,15 @@ offset_right = 785.0
 offset_bottom = 227.0
 script = ExtResource("9_85g3d")
 
-[node name="PanelContainer" type="PanelContainer" parent="GameOverMenu"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameOverMenu"]
 layout_mode = 0
 offset_right = 402.0
 offset_bottom = 422.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverMenu/PanelContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameOverMenu/PanelContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
@@ -102,7 +122,7 @@ bbcode_enabled = true
 text = "[center][b]GAME OVER[b][center]"
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="GameOverMenu/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
@@ -111,9 +131,9 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="Button" type="Button" parent="GameOverMenu/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Exit"
 
-[connection signal="pressed" from="GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="GameOverMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/GameOverMenu" method="_on_exit_button_pressed"]

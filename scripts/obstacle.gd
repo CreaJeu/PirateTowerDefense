@@ -6,7 +6,11 @@ var health: int
 
 func _ready():
 	health = max_health
-	add_to_group("obstacles")
+	$ConstructionRestriction.add_to_group("obstacles")
+	add_to_group("build_blocker")
+
+func get_overlapping_bodies():
+	return $ConstructionRestriction.get_overlapping_bodies()
 
 func take_damage(amount: int):
 	health -= amount
