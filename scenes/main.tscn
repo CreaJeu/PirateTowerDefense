@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cik8hijr55rcl"]
+[gd_scene load_steps=12 format=3 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b8uv0kco1qmfv" path="res://scenes/water.tscn" id="1_85g3d"]
-[ext_resource type="PackedScene" uid="uid://d1dbwwgbehimg" path="res://scenes/ground.tscn" id="2_choun"]
+[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://bu1oidasd6666" path="res://scripts/base.gd" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
@@ -61,6 +61,9 @@ position = Vector2(396, 561)
 position = Vector2(802, 318)
 
 [node name="Turrets" type="Node2D" parent="."]
+
+[node name="Turret4" parent="Turrets" instance=ExtResource("8_tipki")]
+position = Vector2(702, 425)
 
 [node name="Turret" parent="Turrets" instance=ExtResource("8_tipki")]
 position = Vector2(1198, 494)

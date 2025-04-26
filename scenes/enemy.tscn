@@ -1,7 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpxm4hhhbj3ab"]
+[gd_scene load_steps=10 format=3 uid="uid://dpxm4hhhbj3ab"]
 
 [ext_resource type="Script" uid="uid://kyurd04tghir" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://by0ft2bcqtbrj" path="res://assets/sprites/enemy/Pirate.png" id="2_xwavj"]
+[ext_resource type="Texture2D" uid="uid://ctllvidso375i" path="res://assets/sprites/enemy/PirateLeft.png" id="3_nenq2"]
+[ext_resource type="Texture2D" uid="uid://dyrcx1hjce1ud" path="res://assets/sprites/enemy/PirateRight.png" id="4_md484"]
+[ext_resource type="Texture2D" uid="uid://cb4bllx2rclno" path="res://assets/sprites/enemy/PirateUp.png" id="5_ipns3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qclf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xwavj")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nenq2")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_md484")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ipns3")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 66.2722
@@ -15,8 +54,11 @@ script = ExtResource("1_4gyqm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8qclf")
+animation = &"up"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.141176, 0.72549, 0.270588, 1)
 texture = ExtResource("1_7k104")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
