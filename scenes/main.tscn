@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b61n3ww8i176b"]
+[gd_scene load_steps=18 format=4 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
 [ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cw1waua8p1rsh" path="res://scenes/topbar.tscn" id="10_ya4ey"]
+[ext_resource type="Script" uid="uid://7w84b3nw7nnc" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://cvmj2ud8tqdaf" path="res://assets/sprites/PUMPKIN2.png" id="13_a8y0u"]
 
@@ -25,10 +26,10 @@ radius = 67.2681
 [sub_resource type="SpriteFrames" id="SpriteFrames_jkv2x"]
 animations = [{
 "frames": [{
-"duration": 0.3,
+"duration": 3.0,
 "texture": ExtResource("12_trceg")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": ExtResource("13_a8y0u")
 }],
 "loop": true,
@@ -157,10 +158,12 @@ theme_override_font_sizes/font_size = 60
 text = "Exit"
 
 [node name="Pumpkin" type="Node2D" parent="."]
+position = Vector2(895, 547)
+script = ExtResource("12_a8y0u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pumpkin"]
 texture_filter = 1
-position = Vector2(895, 547)
 sprite_frames = SubResource("SpriteFrames_jkv2x")
+frame_progress = 0.155488
 
 [connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/GameOverMenu" method="_on_exit_button_pressed"]

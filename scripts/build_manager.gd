@@ -85,7 +85,9 @@ func _unhandled_input(event):
 		return
 	
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			ghost_instance.rotation += deg_to_rad(15) # Rotate 15 degrees clockwise
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			ghost_instance.rotation -= deg_to_rad(15) # Rotate 15 degrees counter-clockwise
+		if build_mode:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				ghost_instance.rotation += deg_to_rad(15) # Rotate 15 degrees clockwise
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				ghost_instance.rotation -= deg_to_rad(15) # Rotate 15 degrees counter-clockwise
+		
