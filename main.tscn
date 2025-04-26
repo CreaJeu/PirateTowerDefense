@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cik8hijr55rcl"]
+
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://enemy_spawner.gd" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://enemy.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://obstacle.tscn" id="4_lquwl"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1bvp3"]
+vertices = PackedVector2Array(1147.9, 642.062, 13.0078, 649.93, 13.9766, 15.9688, 1142.09, 13.0234)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(4.00006, 6.00003, 1152, 3, 1158, 652, 3.00006, 660)])
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.364706, 1, 0.976471, 1)
+position = Vector2(576, 326)
+scale = Vector2(8.98438, 5.0625)
+texture = ExtResource("1_0xm2m")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Background"]
+position = Vector2(-64.5565, -65.5803)
+scale = Vector2(0.111304, 0.197531)
+navigation_polygon = SubResource("NavigationPolygon_1bvp3")
+
+[node name="Base" type="Node2D" parent="."]
+position = Vector2(494, 277)
+
+[node name="Sprite2D" type="Sprite2D" parent="Base"]
+modulate = Color(1, 0.0745098, 1, 1)
+position = Vector2(63, 65)
+texture = ExtResource("1_0xm2m")
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("2_h2yge")
+enemy_scene = ExtResource("3_1bvp3")
+spawn_rate = 0.5
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource("4_lquwl")]
+position = Vector2(820, 106)
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_lquwl")]
+position = Vector2(173, 457)
