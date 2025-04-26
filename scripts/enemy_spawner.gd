@@ -3,7 +3,7 @@ extends Node2D
 
 @export var enemy_scene: PackedScene
 @export var spawn_rate = 1.5 # seconds between spawns
-@export var spawn_distance = 600.0
+@export var spawn_distance = 960.0
 
 var game_over := false
 var timer := 0.0
@@ -24,8 +24,8 @@ func _process(delta):
 func spawn_enemy():
 	var enemy: Enemy = enemy_scene.instantiate()
 	$"../Enemies".add_child(enemy)
-	var angle = randf() * TAU
-	var spawn_pos = Vector2(cos(angle), sin(angle)) * spawn_distance
+	var angle = randf() * 360
+	var spawn_pos = Vector2(960, 540) + Vector2(cos(angle), sin(angle)) * spawn_distance
 	enemy.global_position = spawn_pos
 	var base = $"../Base"
 	enemy.target = base

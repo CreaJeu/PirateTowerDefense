@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b0mmpokg2t8bi"
+path="res://.godot/imported/spritesheetPirate.aseprite-b43047e80e36f20e8606543cfb2323df.res"
+
+[deps]
+
+source_file="res://assets/sprites/enemy/spritesheetPirate.aseprite"
+dest_files=["res://.godot/imported/spritesheetPirate.aseprite-b43047e80e36f20e8606543cfb2323df.res"]
+
+[params]
+

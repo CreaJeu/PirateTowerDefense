@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bw4ae7yhr28y"
+path="res://.godot/imported/barricade.ase-ed2d647cb3d14bb74779b8c5c102cd32.res"
+
+[deps]
+
+source_file="res://assets/sprites/structure/barricade.ase"
+dest_files=["res://.godot/imported/barricade.ase-ed2d647cb3d14bb74779b8c5c102cd32.res"]
+
+[params]
+
