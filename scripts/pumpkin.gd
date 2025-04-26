@@ -7,10 +7,10 @@ func _ready():
 func _physics_process(delta):
 	var mouse_pos = get_viewport().get_mouse_position()
 	
-	var left = position[0] - $Collision.get_shape().size[0] / 2
-	var right = position[0] + $Collision.get_shape().size[0] / 2
-	var top = position[1] - $Collision.get_shape().size[1] / 2
-	var bottom = position[1] + $Collision.get_shape().size[1] / 2
+	var left = position[0] - $CollisionShape2D.get_shape().size[0] / 2
+	var right = position[0] + $CollisionShape2D.get_shape().size[0] / 2
+	var top = position[1] - $CollisionShape2D.get_shape().size[1] / 2
+	var bottom = position[1] + $CollisionShape2D.get_shape().size[1] / 2
 	
 	if (mouse_pos[0] > left && mouse_pos[0] < right &&
 			mouse_pos[1] > top && mouse_pos[1] < bottom):
