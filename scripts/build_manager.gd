@@ -62,6 +62,11 @@ func _process(delta):
 	if ghost_instance is Turret:
 		valid = can_build_at(ghost_instance.global_position, 6, 6, ghost_instance.rotation)
 
+	if valid:
+		ghost_instance.modulate = Color(0, 1, 0, 0.5) # Green semi-transparent
+	else:
+		ghost_instance.modulate = Color(1, 0, 0, 0.5) # Red semi-transparent
+
 	if Input.is_action_just_released("place_object") and not get_viewport().gui_get_hovered_control():
 		print("Trying placing object")
 		try_place(valid)
