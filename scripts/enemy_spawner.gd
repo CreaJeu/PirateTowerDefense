@@ -30,6 +30,11 @@ func spawn_enemy():
 	var base = $"../Base"
 	enemy.target = base
 	
+	var min_value = 0.8
+	var max_value = 1.2
+	var random_float_in_range = randf_range(min_value, max_value)
+	enemy.scale = Vector2(random_float_in_range,random_float_in_range)
+	
 	enemy.initialize(base, spawn_pos)
 
 func _on_game_over():

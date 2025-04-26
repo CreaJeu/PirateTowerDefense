@@ -8,7 +8,6 @@ func _ready():
 	health = max_health
 	$ConstructionRestriction.add_to_group("obstacles")
 	add_to_group("build_blocker")
-	$HealthBar.setup(max_health)
 	
 
 func shake(duration = 0.2, strength = 5.0):
@@ -38,8 +37,7 @@ func get_overlapping_bodies():
 
 func take_damage(amount: int):
 	health -= amount
-	$HealthBar.lose_health(amount)
-	shake()  # Add shake effect when taking damage
+	shake(0.15)  # Add shake effect when taking damage
 	if health <= 0:
 		on_destroyed()
 
