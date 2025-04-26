@@ -1,13 +1,18 @@
+<<<<<<< HEAD
 [gd_scene load_steps=15 format=4 uid="uid://cik8hijr55rcl"]
+=======
+[gd_scene load_steps=14 format=4 uid="uid://cik8hijr55rcl"]
+>>>>>>> 35fd6495baf0c1a5eaf45c35babf4f964947b461
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
-[ext_resource type="Script" path="res://scripts/base.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://bu1oidasd6666" path="res://scripts/base.gd" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c6g4277ton6uj" path="res://assets/sprites/tile/Tilesets/Water.png" id="3_tipki"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://d3555jk1lh0cg" path="res://assets/sprites/tile/Tilesets/Grass.png" id="6_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://4mvdwxigmoa3" path="res://assets/sprites/tile/Tilesets/Hills.png" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85g3d"]
 texture = ExtResource("6_o6xl0")
@@ -221,4 +226,15 @@ position = Vector2(1245, 311)
 position = Vector2(396, 561)
 
 [node name="Obstacle3" parent="Obstacles" instance=ExtResource("4_lquwl")]
-position = Vector2(802, 318)
+position = Vector2(270, 227)
+
+[node name="Turrets" type="Node2D" parent="."]
+
+[node name="Turret" parent="Turrets" instance=ExtResource("8_tipki")]
+position = Vector2(1198, 494)
+
+[node name="Turret2" parent="Turrets" instance=ExtResource("8_tipki")]
+position = Vector2(927, 342)
+
+[node name="Turret3" parent="Turrets" instance=ExtResource("8_tipki")]
+position = Vector2(782, 615)

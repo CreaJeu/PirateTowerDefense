@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0kwqqja08e8o"]
+
+[ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/turret.gd" id="1_el7wl"]
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_x3mc5"]
+[ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_485p4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_el7wl"]
+radius = 517.193
+
+[node name="Turret" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_el7wl")
+projectile_scene = ExtResource("2_485p4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.785896, 0.117776, 0.364945, 1)
+texture = ExtResource("1_x3mc5")
+
+[node name="FiringCooldown" type="Timer" parent="."]
+
+[node name="FiringRange" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_el7wl")
