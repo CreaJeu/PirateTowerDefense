@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=4 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
-[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://b8uv0kco1qmfv" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dpfqlomfq3bxi" path="res://assets/sprites/texture_atlas.png" id="1_eb6dy"]
 [ext_resource type="PackedScene" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
@@ -82,6 +82,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkv2x"]
+size = Vector2(25, 25)
 
 [node name="Main" type="Node2D"]
 
