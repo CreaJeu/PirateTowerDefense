@@ -20,5 +20,5 @@ func take_damage(amount: int):
 		on_destroyed()
 
 func on_destroyed():
-	Signals.obstacle_destroyed.emit(global_position, 14, 4, rotation)
+	Signals.obstacle_destroyed.emit(global_position, 6, 2, rotation)
 	queue_free()

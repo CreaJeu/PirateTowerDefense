@@ -94,7 +94,7 @@ func try_place(is_blocked):
 	obstacles.add_child(real_instance)
 	
 	if real_instance is Obstacle:
-		reserve_area_at(real_instance.global_position, 12, 3, blocked_land_atlas_coords, real_instance.rotation)
+		reserve_area_at(real_instance.global_position, 6, 2, blocked_land_atlas_coords, real_instance.rotation)
 	if real_instance is Turret:
 		reserve_area_at(real_instance.global_position, 6, 6, blocked_land_atlas_coords, real_instance.rotation)
 	

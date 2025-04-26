@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cw1waua8p1rsh"]
 
-[ext_resource type="Script" path="res://scripts/topbar.gd" id="1_h2uq7"]
+[ext_resource type="Script" uid="uid://xj0n2qew2oyj" path="res://scripts/topbar.gd" id="1_h2uq7"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="2_qous1"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="3_iwmr3"]
-[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="4_eexb2"]
 [ext_resource type="Texture2D" uid="uid://e45gkv48y5e" path="res://assets/sprites/Icon/coin.png" id="4_iwmr3"]
 [ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/enemy/Singe.png" id="5_eexb2"]
+[ext_resource type="Texture2D" uid="uid://drhx7ylohcbmh" path="res://assets/sprites/structure/barricade.png" id="6_iwmr3"]
 
 [node name="Topbar" type="PanelContainer"]
 offset_right = 1920.0
@@ -90,7 +90,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("4_eexb2")
+texture = ExtResource("6_iwmr3")
 expand_mode = 2
 
 [node name="Button" type="Button" parent="HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer"]
