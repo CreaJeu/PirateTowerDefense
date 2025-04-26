@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b61n3ww8i176b"]
+[gd_scene load_steps=22 format=4 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_0xm2m"]
 [ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://7w84b3nw7nnc" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://cvmj2ud8tqdaf" path="res://assets/sprites/PUMPKIN2.png" id="13_a8y0u"]
+[ext_resource type="Script" uid="uid://bekno3v27cnwh" path="res://scripts/camera_2d.gd" id="16_jbj1t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trceg"]
 texture = ExtResource("1_eb6dy")
@@ -219,5 +220,12 @@ script = ExtResource("12_a8y0u")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jkv2x")
 frame_progress = 0.155488
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(930, 519)
+zoom = Vector2(2, 2)
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("16_jbj1t")
 
 [connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/GameOverMenu" method="_on_exit_button_pressed"]
