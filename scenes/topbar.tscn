@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw1waua8p1rsh"]
+[gd_scene load_steps=8 format=3 uid="uid://cw1waua8p1rsh"]
 
 [ext_resource type="Script" uid="uid://xj0n2qew2oyj" path="res://scripts/topbar.gd" id="1_h2uq7"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="2_qous1"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="3_iwmr3"]
 [ext_resource type="Texture2D" uid="uid://e45gkv48y5e" path="res://assets/sprites/Icon/coin.png" id="4_iwmr3"]
-[ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="5_eexb2"]
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="5_tdc8a"]
+[ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="6_eexb2"]
 [ext_resource type="Texture2D" uid="uid://drhx7ylohcbmh" path="res://assets/sprites/structure/barricade.png" id="6_iwmr3"]
 
 [node name="Topbar" type="PanelContainer"]
@@ -44,6 +45,33 @@ bbcode_enabled = true
 text = "[center][b]100"
 vertical_alignment = 1
 
+[node name="KillsMCont" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/KillsMCont"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/KillsMCont/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/KillsMCont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_tdc8a")
+expand_mode = 2
+
+[node name="LabelKills" type="RichTextLabel" parent="HBoxContainer/KillsMCont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center][b]100"
+vertical_alignment = 1
+
 [node name="Empty" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,7 +93,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/SingeMcont/PanelContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_eexb2")
+texture = ExtResource("6_eexb2")
 expand_mode = 2
 
 [node name="Button" type="Button" parent="HBoxContainer/SingeMcont/PanelContainer/HBoxContainer"]

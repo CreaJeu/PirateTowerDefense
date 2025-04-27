@@ -13,11 +13,11 @@ size = Vector2(87, 24)
 script = ExtResource("1_drdry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(80.75, 7)
+position = Vector2(43.25, 12.5)
 shape = SubResource("RectangleShape2D_aubd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(81.5, 6.5)
+position = Vector2(44, 12)
 texture = ExtResource("2_cjuko")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
@@ -25,5 +25,5 @@ texture = ExtResource("2_cjuko")
 [node name="ConstructionRestriction" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConstructionRestriction"]
-position = Vector2(81.5, 7)
+position = Vector2(44, 12.5)
 shape = SubResource("RectangleShape2D_drdry")
