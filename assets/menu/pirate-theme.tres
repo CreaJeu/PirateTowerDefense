@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://d0tsodlbmy5wp"]
+
+[ext_resource type="Texture2D" uid="uid://c6gyvsy6gxdgw" path="res://assets/menu/pirate-menu/Images/UI/windowtileset.png" id="1_p7m25"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7m25"]
+texture = ExtResource("1_p7m25")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.752941, 0.752941, 0.705882, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0dv4j"]
+texture = ExtResource("1_p7m25")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_p7m25")
+Button/styles/normal = SubResource("StyleBoxTexture_0dv4j")

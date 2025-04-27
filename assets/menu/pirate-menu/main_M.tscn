@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://85tnfny0nu6p"]
+
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_8jnih"]
+[ext_resource type="Script" uid="uid://datamxu1lpmax" path="res://assets/menu/pirate-menu/main_m.gd" id="1_870vf"]
+[ext_resource type="AudioStream" uid="uid://fhd4oq3i3uhf" path="res://assets/menu/pirate-menu/Sounds/Music/stranger-things-124008.mp3" id="3_erco4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_870vf")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(580, 326.5)
+scale = Vector2(9.03125, 5.08594)
+texture = ExtResource("1_8jnih")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 439.0
+offset_top = 320.0
+offset_right = 762.0
+offset_bottom = 456.0
+text = "Start"
+icon = ExtResource("1_8jnih")
+metadata/_edit_use_anchors_ = true
+
+[node name="Option" type="Button" parent="."]
+offset_left = 439.0
+offset_top = 173.0
+offset_right = 768.0
+offset_bottom = 309.0
+text = "Option"
+icon = ExtResource("1_8jnih")
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 440.0
+offset_top = 464.0
+offset_right = 762.0
+offset_bottom = 600.0
+text = "Exit"
+icon = ExtResource("1_8jnih")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_erco4")
+autoplay = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_erco4")
+autoplay = true
+bus = &"Sound"
+
+[connection signal="pressed" from="Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
