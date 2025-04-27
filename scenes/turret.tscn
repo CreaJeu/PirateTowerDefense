@@ -60,7 +60,7 @@ columns = 2
 [node name="TextureRect" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 visible = false
 layout_mode = 2
-texture = ExtResource("4_6fjxm")
+texture = ExtResource("4_mqfwu")
 
 [node name="DamageButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 visible = false
@@ -75,18 +75,18 @@ texture = ExtResource("5_dirdf")
 
 [node name="ProjSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
-theme = ExtResource("5_mqfwu")
 text = "Projectile speed upgrade (20)"
+theme = ExtResource("5_mqfwu")
 alignment = 0
 
 [node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("4_6fjxm")
+texture = ExtResource("7_mqfwu")
 
 [node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
-theme = ExtResource("5_mqfwu")
 text = "Range upgrade (20)"
+theme = ExtResource("5_mqfwu")
 alignment = 0
 
 [node name="FiringArea" type="Area2D" parent="."]
