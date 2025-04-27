@@ -60,7 +60,10 @@ func _process(delta):
 	if ghost_instance is Obstacle:
 		valid = can_build_at(ghost_instance.global_position, 12, 4, ghost_instance.rotation)
 	if ghost_instance is Turret:
-		valid = can_build_at(ghost_instance.global_position, 6, 6, ghost_instance.rotation)
+		var turret_size: Vector2 = ghost_instance.get_size()
+		valid = can_build_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
+		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, ghost_instance.rotation
+		)
 
 	if valid:
 		ghost_instance.modulate = Color(0, 1, 0, 0.5) # Green semi-transparent
@@ -96,16 +99,19 @@ func try_place(is_blocked):
 	if real_instance is Obstacle:
 		reserve_area_at(real_instance.global_position, 6, 2, blocked_land_atlas_coords, real_instance.rotation)
 	if real_instance is Turret:
-		reserve_area_at(real_instance.global_position, 6, 6, blocked_land_atlas_coords, real_instance.rotation)
+		var turret_size: Vector2 = ghost_instance.get_size()
+		reserve_area_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
+		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, blocked_land_atlas_coords, ghost_instance.rotation
+		)
 	
 	cancel_build()
 
-func can_build_at(position: Vector2, width: int, height: int, rotation: float = 0.0) -> bool:
+func can_build_at(object_position: Vector2, width: int, height: int, object_rotation: float = 0.0) -> bool:
 	for x in range(width):
 		for y in range(height):
-			var local_offset = Vector2(x, y) - Vector2(width / 2, height / 2) + Vector2(0.5, 0.5)
-			local_offset = local_offset.rotated(rotation)
-			var check_pos = position + local_offset * construction_mask.rendering_quadrant_size
+			var local_offset = Vector2(x, y) #  - Vector2(width / 2, height / 2) + Vector2(0.5, 0.5)
+			local_offset = local_offset.rotated(object_rotation)
+			var check_pos = object_position + local_offset * construction_mask.rendering_quadrant_size
 			var cell = construction_mask.local_to_map(check_pos)
 			
 			var tile_data = construction_mask.get_cell_tile_data(cell)
@@ -124,22 +130,22 @@ func can_build_at(position: Vector2, width: int, height: int, rotation: float = 
 
 	return true # All checked tiles were OK
 
-func reserve_area_at(position: Vector2, width: int, height: int, atlas_coords: Vector2i, rotation: float = 0.0):
+func reserve_area_at(object_position: Vector2, width: int, height: int, atlas_coords: Vector2i, object_rotation: float = 0.0):
 	for x in range(width):
 		for y in range(height):
-			var local_offset = Vector2(x, y) - Vector2(width/4, height/4) # ça a l'air passable
-			local_offset = local_offset.rotated(rotation)
-			var coords = construction_mask.local_to_map(position + local_offset * construction_mask.rendering_quadrant_size)
+			var local_offset = Vector2(x, y) # ça a l'air passable  - Vector2(width/4, height/4)
+			local_offset = local_offset.rotated(object_rotation)
+			var coords = construction_mask.local_to_map(object_position + local_offset * construction_mask.rendering_quadrant_size)
 			var source_id = construction_mask.get_cell_source_id(coords)
 			construction_mask.set_cell(coords, source_id, atlas_coords)
 			construction_mask.get_cell_tile_data(coords).set_custom_data("type", "blocked_land")
 
-func free_area_at(position: Vector2, width: int, height: int, rotation: float = 0.0):
+func free_area_at(object_position: Vector2, width: int, height: int, object_rotation: float = 0.0):
 	for x in range(width):
 		for y in range(height):
-			var local_offset = Vector2(x, y) - Vector2(width/4, height/4) # ça a l'air passable
-			local_offset = local_offset.rotated(rotation)
-			var coords = construction_mask.local_to_map(position + local_offset * construction_mask.rendering_quadrant_size)
+			var local_offset = Vector2(x, y) # - Vector2(width/4, height/4) # ça a l'air passable
+			local_offset = local_offset.rotated(object_rotation)
+			var coords = construction_mask.local_to_map(object_position + local_offset * construction_mask.rendering_quadrant_size)
 			var source_id = construction_mask.get_cell_source_id(coords)
 			construction_mask.set_cell(coords, source_id, free_land_atlas_coords)
 			construction_mask.get_cell_tile_data(coords).set_custom_data("type", "free_land")

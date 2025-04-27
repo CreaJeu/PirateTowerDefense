@@ -5,6 +5,8 @@ extends Area2D
 @export var fire_rate: float = 1.0 # seconds per shot
 @export var projectile_speed: float = 500.0
 @export var is_active: bool = true
+@export var restriction_width_tiles: int = 6
+@export var restriction_height_tiles: int = 6
 
 var enemies_in_range: Array[Node2D] = []
 
@@ -17,6 +19,9 @@ func _ready():
 	fire_timer.wait_time = fire_rate
 	fire_timer.start()
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
+
+func get_size() -> Vector2:
+	return Vector2($Sprite2D.texture.get_width(), $Sprite2D.texture.get_height())
 
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
