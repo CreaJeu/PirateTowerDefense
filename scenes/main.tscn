@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cuy0rosgbajo6" path="res://scenes/base.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
-[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://daiy41eawth0k" path="res://scenes/allies/herisson.tscn" id="9_jbj1t"]
 [ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
@@ -81,15 +81,19 @@ position = Vector2(802, 318)
 
 [node name="Turret4" parent="Turrets" instance=ExtResource("8_tipki")]
 position = Vector2(702, 425)
+placed = true
 
 [node name="Turret" parent="Turrets" instance=ExtResource("8_tipki")]
 position = Vector2(1198, 494)
+placed = true
 
 [node name="Turret2" parent="Turrets" instance=ExtResource("8_tipki")]
 position = Vector2(927, 342)
+placed = true
 
 [node name="Turret3" parent="Turrets" instance=ExtResource("8_tipki")]
 position = Vector2(782, 615)
+placed = true
 
 [node name="Herisson" parent="Turrets" instance=ExtResource("9_jbj1t")]
 position = Vector2(629, 524)
