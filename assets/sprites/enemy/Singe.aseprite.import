@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dbyg3bwryf7sl"
+path="res://.godot/imported/Singe.aseprite-ee457673c71458a9062eec83386e00f0.res"
+
+[deps]
+
+source_file="res://assets/sprites/enemy/Singe.aseprite"
+dest_files=["res://.godot/imported/Singe.aseprite-ee457673c71458a9062eec83386e00f0.res"]
+
+[params]
+

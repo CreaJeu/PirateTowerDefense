@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://df4gy0lewmru8"
+path="res://.godot/imported/Singe.aseprite-6f5af27d77af2d1e4b304a9e919db75a.res"
+
+[deps]
+
+source_file="res://assets/sprites/structure/Singe.aseprite"
+dest_files=["res://.godot/imported/Singe.aseprite-6f5af27d77af2d1e4b304a9e919db75a.res"]
+
+[params]
+
