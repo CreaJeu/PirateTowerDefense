@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cr1mgtat886fc"
+path="res://.godot/imported/lama.aseprite-f7ce4ea9b5a4a90724ac6184b1527293.res"
+
+[deps]
+
+source_file="res://assets/sprites/structure/lama.aseprite"
+dest_files=["res://.godot/imported/lama.aseprite-f7ce4ea9b5a4a90724ac6184b1527293.res"]
+
+[params]
+

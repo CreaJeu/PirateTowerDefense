@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://drhx7ylohcbmh" path="res://assets/sprites/structure/barricade.png" id="6_iwmr3"]
 [ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="7_tdc8a"]
 [ext_resource type="Texture2D" uid="uid://cmfn5u2kyfhxl" path="res://assets/sprites/structure/herisson.png" id="8_y6371"]
+[ext_resource type="Texture2D" uid="uid://c8h7ovyikhd7f" path="res://assets/sprites/structure/lama.png" id="11_kkl76"]
 
 [node name="Topbar" type="PanelContainer"]
 offset_right = 1920.0
@@ -206,7 +207,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/LamaMcont/PanelContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("7_tdc8a")
+texture = ExtResource("11_kkl76")
 expand_mode = 2
 
 [node name="Button" type="Button" parent="HBoxContainer/LamaMcont/PanelContainer/HBoxContainer"]
