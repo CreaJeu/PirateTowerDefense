@@ -14,6 +14,7 @@ extends StaticBody2D
 var current_damage_upgrade = 1
 var current_proj_speed_upgrade = 1
 var current_range_upgrade = 1
+var current_level = 1
 
 var health: int
 var enemies_in_range: Array[Node2D] = []
@@ -159,6 +160,7 @@ func upgrade_range():
 	$FiringArea/FiringRange.shape.radius += 30
 	
 	current_range_upgrade += 1
+	check_level()
 
 func upgrade_projectile_speed():
 	if current_proj_speed_upgrade >= 5:
@@ -172,6 +174,7 @@ func upgrade_projectile_speed():
 	projectile_speed += 100
 	
 	current_proj_speed_upgrade += 1
+	check_level()
 
 func check_money(current_money: int):
 	if current_money < 20:
@@ -182,3 +185,21 @@ func check_money(current_money: int):
 			upgrade_proj_speed_button.disabled = false
 		if current_range_upgrade < 5:
 			upgrade_range_button.disabled = false
+
+func check_level():
+	if current_level >= 4:
+		return
+		
+	var total_level = current_proj_speed_upgrade + current_range_upgrade # + current_damage_upgrade
+	if total_level < current_level*3:
+		return
+		
+	current_level += 1
+	if current_level == 1:
+		$Sprite2D.texture = load("res://assets/sprites/structure/Singe.png")
+	elif current_level == 2:
+		$Sprite2D.texture = load("res://assets/sprites/structure/SingeUpgrade1.png")
+	elif current_level == 3:
+		$Sprite2D.texture = load("res://assets/sprites/structure/SingeUpgrade2.png")
+	elif current_level == 4:
+		$Sprite2D.texture = load("res://assets/sprites/structure/SingeUpgrade3.png")

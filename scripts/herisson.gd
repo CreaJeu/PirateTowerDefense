@@ -12,6 +12,7 @@ extends StaticBody2D
 var current_hp_upgrade = 1
 var current_attack_speed_upgrade = 1
 var current_range_upgrade = 1
+var current_herisson_level = 1
 
 var health: int
 var enemies_in_range: Array[Node2D] = []
@@ -147,6 +148,7 @@ func upgrade_hp():
 	max_health += 10
 	
 	current_hp_upgrade += 1
+	check_herisson_level()
 
 func upgrade_range():
 	if current_range_upgrade >= 5:
@@ -160,6 +162,7 @@ func upgrade_range():
 	$FiringArea/FiringRange.shape.radius += 10
 	
 	current_range_upgrade += 1
+	check_herisson_level()
 
 func upgrade_attack_speed():
 	if current_attack_speed_upgrade >= 5:
@@ -173,6 +176,7 @@ func upgrade_attack_speed():
 	fire_rate -= 0.03
 	
 	current_attack_speed_upgrade += 1
+	check_herisson_level()
 
 func check_money(current_money: int):
 	if current_money < 20:
@@ -186,3 +190,23 @@ func check_money(current_money: int):
 			upgrade_range_button.disabled = false
 		if current_hp_upgrade < 5:
 			upgrade_hp_button.disabled = false
+
+func check_herisson_level():
+	if current_herisson_level >= 4:
+		return
+		
+	var total_level = current_attack_speed_upgrade + current_hp_upgrade + current_range_upgrade
+	if total_level < current_herisson_level*5:
+		return
+		
+	current_herisson_level += 1
+	if current_herisson_level == 1:
+		$Sprite2D.texture = load("res://assets/sprites/structure/herisson.png")
+	elif current_herisson_level == 2:
+		$Sprite2D.texture = load("res://assets/sprites/structure/herissonUpgrade1.png")
+	elif current_herisson_level == 3:
+		$Sprite2D.texture = load("res://assets/sprites/structure/herissonUpgrade2.png")
+	elif current_herisson_level == 4:
+		$Sprite2D.texture = load("res://assets/sprites/structure/herissonUpgrade3.png")
+		
+	
