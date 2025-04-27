@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/turret.gd" id="1_el7wl"]
 [ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_485p4"]
-[ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/enemy/Singe.png" id="3_485p4"]
+[ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="3_485p4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el7wl"]
 radius = 158.0
