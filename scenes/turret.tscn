@@ -40,47 +40,49 @@ shape = SubResource("CircleShape2D_485p4")
 [node name="PhysicalShape" type="CollisionShape2D" parent="ConstructionRestriction"]
 shape = SubResource("CircleShape2D_485p4")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="UpgradeMenuPanel/MarginContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("4_6fjxm")
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="DamageButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+visible = false
 layout_mode = 2
 text = "Damage bonus"
 alignment = 0
 
-[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="TextureRect2" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("5_dirdf")
 
-[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="ProjSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Projectile speed bonus"
+text = "Projectile speed upgrade (20)"
 alignment = 0
 
-[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("4_6fjxm")
 
-[node name="Button3" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Reward bonus"
+text = "Range upgrade (20)"
 alignment = 0
 
 [node name="FiringArea" type="Area2D" parent="."]

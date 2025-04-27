@@ -11,10 +11,17 @@ extends StaticBody2D
 @export var max_health: int = 20
 @export var rotation_speed: float = 10.0  # How quickly the turret rotates to face enemies
 
+var current_damage_upgrade = 1
+var current_proj_speed_upgrade = 1
+var current_range_upgrade = 1
+
 var health: int
 var enemies_in_range: Array[Node2D] = []
 
 @onready var fire_timer: Timer = $FiringCooldown
+@onready var upgrade_damage_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/DamageButton
+@onready var upgrade_proj_speed_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/ProjSpeedButton
+@onready var upgrade_range_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/RangeButton
 
 func _ready():
 	$ConstructionRestriction.add_to_group("build_blocker")
@@ -28,6 +35,12 @@ func _ready():
 	if (placed):
 		$Button.show()
 	health = max_health
+	
+	upgrade_proj_speed_button.pressed.connect(upgrade_projectile_speed)
+	upgrade_range_button.pressed.connect(upgrade_range)
+	
+	Gamestate.money_changed.connect(check_money)
+
 	
 func _process(delta):
 	# Handle rotation toward target if there are enemies
@@ -95,10 +108,10 @@ func shoot_at(target: Node2D):
 	get_tree().current_scene.add_child(projectile)
 
 func show_upgrade_menu():
-	$PanelContainer.show()
+	$UpgradeMenuPanel.show()
 	
 func hide_upgrade_menu():
-	$PanelContainer.hide()
+	$UpgradeMenuPanel.hide()
 
 func get_overlapping_bodies():
 	return $ConstructionRestriction.get_overlapping_bodies()
@@ -133,3 +146,39 @@ func shake(duration = 0.2, strength = 5.0):
 	# Final tween to return to original position
 	tween.chain().tween_property(self, "position", original_position, 0.1)
 	tween.play()
+
+func upgrade_range():
+	if current_range_upgrade >= 5:
+		upgrade_range_button.disabled = true
+		print("upgrade_range maxed")
+		return
+	
+	if not (Gamestate.spend_money(20)):
+		return
+	
+	$FiringArea/FiringRange.shape.radius += 30
+	
+	current_range_upgrade += 1
+
+func upgrade_projectile_speed():
+	if current_proj_speed_upgrade >= 5:
+		upgrade_proj_speed_button.disabled = true
+		print("upgrade_projectile_speed maxed")
+		return
+	
+	if not (Gamestate.spend_money(20)):
+		return
+		
+	projectile_speed += 100
+	
+	current_proj_speed_upgrade += 1
+
+func check_money(current_money: int):
+	if current_money < 20:
+		upgrade_proj_speed_button.disabled = true
+		upgrade_range_button.disabled = true
+	else:
+		if current_proj_speed_upgrade < 5:
+			upgrade_proj_speed_button.disabled = false
+		if current_range_upgrade < 5:
+			upgrade_range_button.disabled = false
