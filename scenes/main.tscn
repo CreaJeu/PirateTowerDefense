@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=4 uid="uid://b61n3ww8i176b"]
 
-[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://ber7plm5axbh6" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://b6h5pgsyixgqd" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cuy0rosgbajo6" path="res://scenes/base.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
-[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://daiy41eawth0k" path="res://scenes/allies/herisson.tscn" id="9_jbj1t"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dpya8rmoqejip" path="res://scenes/allies/lama.tscn" id="10_muem4"]

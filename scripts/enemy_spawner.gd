@@ -6,8 +6,8 @@ extends Node2D
 @export var spawn_distance = 960.0
 
 # Difficulty scaling parameters
-@export var min_spawn_rate = 0.1 # fastest possible spawn rate
-@export var kills_per_difficulty_increase = 10 # kills needed for each speed increase
+@export var min_spawn_rate = 0.06 # fastest possible spawn rate
+@export var kills_per_difficulty_increase = 50 # kills needed for each speed increase
 @export var spawn_rate_decrease_amount = 0.1 # how much faster spawns get per threshold
 
 @onready var spawn_timer: Timer = $SpawnTimer
