@@ -24,7 +24,7 @@ func _process(delta):
 	
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
-		body.damage_taken()
+		body.hit_taken(damage,slow_strength,slow_duration)
 		queue_free()
 
 func projectile_stats(damage_param,slow_strength_param,slow_duration_param):

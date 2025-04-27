@@ -59,4 +59,5 @@ func shoot_at(target: Node2D):
 	projectile.global_position = global_position
 	projectile.direction = (target.global_position - global_position).normalized()
 	projectile.speed = projectile_speed
+	projectile.projectile_stats(damage,slow_strength,slow_duration)
 	get_tree().current_scene.add_child(projectile)

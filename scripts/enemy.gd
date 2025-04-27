@@ -1,12 +1,12 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export var initial_speed = 100.0
-@export var speed = 100.0
-@export var damage = 10.0
-@export var money_on_death = 10.0
-@export var target: Node2D
-@export var health = 10.0
+@onready var initial_speed = 100.0
+@onready var speed = 100.0
+@onready var damage = 10.0
+@onready var money_on_death = 10.0
+@onready var target: Node2D
+@onready var health = 10.0
 
 
 @onready var attack_range = $MeleeRange
@@ -36,6 +36,7 @@ func _ready():
 	slow_timer.timeout.connect(_on_slow_timer_timeout)
 	$AnimatedSprite2D.play("down")
 	is_ready = true
+	
 
 func _physics_process(delta):
 	if not is_ready:
@@ -104,9 +105,10 @@ func hit_taken(damage_taken,slow_strength = 0,slow_duration = 0):
 	
 	health -= damage_taken
 	if(slow_strength != 0):
-		speed -= slow_strength
-		slow_timer.wait_time = slow_duration
-		slow_timer.start()
+		if(speed == initial_speed): #eviter d'accumuler du slow
+			speed -= slow_strength
+			slow_timer.wait_time = slow_duration
+			slow_timer.start()
 	
 	
 	if(health<0):

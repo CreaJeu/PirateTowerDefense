@@ -103,7 +103,7 @@ placed = true
 position = Vector2(629, 524)
 
 [node name="Lama" parent="Turrets" instance=ExtResource("10_muem4")]
-position = Vector2(472, 496)
+position = Vector2(520, 681)
 
 [node name="BuildManager" type="Node2D" parent="." node_paths=PackedStringArray("construction_mask")]
 script = ExtResource("9_ya4ey")
