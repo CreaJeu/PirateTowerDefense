@@ -33,7 +33,6 @@ func _ready():
 	attack_range.body_entered.connect(_on_attack_range_body_entered)
 	attack_range.body_exited.connect(_on_attack_range_body_exited)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
-	slow_timer.timeout.connect(_on_slow_timer_timeout)
 	$AnimatedSprite2D.play("down")
 	is_ready = true
 	
