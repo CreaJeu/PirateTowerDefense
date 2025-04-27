@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw1waua8p1rsh"]
+[gd_scene load_steps=12 format=3 uid="uid://cw1waua8p1rsh"]
 
 [ext_resource type="Script" uid="uid://xj0n2qew2oyj" path="res://scripts/topbar.gd" id="1_h2uq7"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="2_qous1"]
@@ -81,6 +81,33 @@ size_flags_horizontal = 3
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[center][b]100"
+vertical_alignment = 1
+
+[node name="DifficultyMCont" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/DifficultyMCont"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DifficultyMCont/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/DifficultyMCont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_eexb2")
+expand_mode = 2
+
+[node name="LabelDifficulty" type="RichTextLabel" parent="HBoxContainer/DifficultyMCont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center][b]0"
 vertical_alignment = 1
 
 [node name="Empty" type="MarginContainer" parent="HBoxContainer"]

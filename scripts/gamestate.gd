@@ -4,6 +4,7 @@ signal money_changed(new_amount: int)
 
 var money: int = 200
 var kills: int = 0
+var difficulty_level: int = 0
 
 func _ready() -> void:
 	Signals.enemy_died.connect(add_money)

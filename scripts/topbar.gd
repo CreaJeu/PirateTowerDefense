@@ -8,6 +8,7 @@ extends PanelContainer
 
 @onready var label_money = $HBoxContainer/MoneyMCont/PanelContainer/HBoxContainer/LabelMoney
 @onready var label_kills = $HBoxContainer/KillsMCont/PanelContainer/HBoxContainer/LabelKills
+@onready var label_difficulty = $HBoxContainer/DifficultyMCont/PanelContainer/HBoxContainer/LabelDifficulty
 
 @export var build_manager: BuildManager
 @export var obstacle_scene: PackedScene
@@ -32,6 +33,7 @@ func _ready():
 	button_lama.text = "Lama\n("+str(build_manager.lama_cost)+")"
 
 	Signals.enemy_died.connect(update_kills)
+	Signals.difficulty_increased.connect(update_difficulty)
 	update_kills(0)
 
 func update_money(money: int):
@@ -59,6 +61,9 @@ func update_money(money: int):
 
 func update_kills(_unused: int):
 	label_kills.text = "[center][b]" + str(Gamestate.get_kills())
+	
+func update_difficulty(new_difficulty: int):
+	label_difficulty.text = "[center][b]" + str(new_difficulty)
 
 func on_button_obstacle():
 	build_manager.start_build(obstacle_scene, build_manager.obstacle_cost)
