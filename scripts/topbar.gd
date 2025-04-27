@@ -3,12 +3,14 @@ extends PanelContainer
 
 @onready var button_obstacle = $HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer/Button
 @onready var button_turret = $HBoxContainer/SingeMcont/PanelContainer/HBoxContainer/Button
+@onready var button_herisson = $HBoxContainer/HerissonMcont/PanelContainer/HBoxContainer/Button
 @onready var label_money = $HBoxContainer/MoneyMCont/PanelContainer/HBoxContainer/LabelMoney
 @onready var label_kills = $HBoxContainer/KillsMCont/PanelContainer/HBoxContainer/LabelKills
 
 @export var build_manager: BuildManager
 @export var obstacle_scene: PackedScene
 @export var turret_scene: PackedScene
+@export var herisson_scene: PackedScene
 
 func _ready():
 	Gamestate.money_changed.connect(update_money)
@@ -16,6 +18,7 @@ func _ready():
 		
 	button_obstacle.pressed.connect(on_button_obstacle)
 	button_turret.pressed.connect(on_button_turret)
+	button_herisson.pressed.connect(on_button_herisson)
 	
 	Signals.enemy_died.connect(update_kills)
 	update_kills(0)
@@ -24,6 +27,11 @@ func update_money(money: int):
 	label_money.text = "[center][b]" + str(money)
 	
 	if build_manager.turret_cost > money:
+		button_turret.disabled = true
+	else:
+		button_turret.disabled = false
+	
+	if build_manager.herisson_cost > money:
 		button_turret.disabled = true
 	else:
 		button_turret.disabled = false
@@ -41,3 +49,6 @@ func on_button_obstacle():
 
 func on_button_turret():
 	build_manager.start_build(turret_scene, build_manager.turret_cost)
+
+func on_button_herisson():
+	build_manager.start_build(herisson_scene, build_manager.herisson_cost)

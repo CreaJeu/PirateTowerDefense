@@ -5,6 +5,7 @@ extends Node2D
 @export var turret_scene: PackedScene
 @export var obstacle_cost: int = 70
 @export var turret_cost: int = 100
+@export var herisson_cost: int = 70
 @export var construction_mask: TileMapLayer
 
 @onready var obstacles = $"../Obstacles"
@@ -36,7 +37,7 @@ func start_build(scene: PackedScene, cost: int):
 	ghost_instance.set_collision_layer(0)
 	ghost_instance.set_collision_mask(1)
 	
-	if ghost_instance is Turret:
+	if ghost_instance is Turret or ghost_instance is Herisson:
 		ghost_instance.is_active = false
 		ghost_instance.get_node("FiringRange").disabled = true
 
@@ -59,7 +60,7 @@ func _process(delta):
 	
 	if ghost_instance is Obstacle:
 		valid = can_build_at(ghost_instance.global_position, 12, 4, ghost_instance.rotation)
-	if ghost_instance is Turret:
+	if ghost_instance is Turret or ghost_instance is Herisson:
 		var turret_size: Vector2 = ghost_instance.get_size()
 		valid = can_build_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
 		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, ghost_instance.rotation
@@ -98,7 +99,7 @@ func try_place(is_blocked):
 	
 	if real_instance is Obstacle:
 		reserve_area_at(real_instance.global_position, 6, 2, blocked_land_atlas_coords, real_instance.rotation)
-	if real_instance is Turret:
+	if real_instance is Turret or real_instance is Herisson:
 		var turret_size: Vector2 = ghost_instance.get_size()
 		reserve_area_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
 		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, blocked_land_atlas_coords, ghost_instance.rotation
@@ -130,6 +131,7 @@ func can_build_at(object_position: Vector2, width: int, height: int, object_rota
 
 	return true # All checked tiles were OK
 
+# Herisson reserve des tuiles mais ils changent pas de couleur ???
 func reserve_area_at(object_position: Vector2, width: int, height: int, atlas_coords: Vector2i, object_rotation: float = 0.0):
 	for x in range(width):
 		for y in range(height):

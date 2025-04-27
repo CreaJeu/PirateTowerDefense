@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b61n3ww8i176b"]
+[gd_scene load_steps=19 format=4 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="PackedScene" uid="uid://ber7plm5axbh6" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://b6h5pgsyixgqd" path="res://scenes/ground.tscn" id="2_choun"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
 [ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://daiy41eawth0k" path="res://scenes/allies/herisson.tscn" id="9_jbj1t"]
+[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cw1waua8p1rsh" path="res://scenes/topbar.tscn" id="10_ya4ey"]
 [ext_resource type="Script" uid="uid://7w84b3nw7nnc" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
@@ -50,6 +51,7 @@ tile_map_data = PackedByteArray("AABUAA4AAQAFAAIAAABVAA4AAQABAAAAAABWAA4AAQABAAA
 visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-7.31744, -11.1116)
 scale = Vector2(1.66347, 1.63889)
 navigation_polygon = SubResource("NavigationPolygon_1bvp3")

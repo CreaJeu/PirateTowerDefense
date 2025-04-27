@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw1waua8p1rsh"]
+[gd_scene load_steps=10 format=3 uid="uid://cw1waua8p1rsh"]
 
 [ext_resource type="Script" uid="uid://xj0n2qew2oyj" path="res://scripts/topbar.gd" id="1_h2uq7"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="2_qous1"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="3_iwmr3"]
 [ext_resource type="Texture2D" uid="uid://e45gkv48y5e" path="res://assets/sprites/Icon/coin.png" id="4_iwmr3"]
-[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="5_tdc8a"]
+[ext_resource type="PackedScene" uid="uid://daiy41eawth0k" path="res://scenes/allies/herisson.tscn" id="4_orvr8"]
+[ext_resource type="Texture2D" uid="uid://dnyjd5sn5b1oa" path="res://assets/UI/MortMortMort.png" id="5_eexb2"]
 [ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="6_eexb2"]
 [ext_resource type="Texture2D" uid="uid://drhx7ylohcbmh" path="res://assets/sprites/structure/barricade.png" id="6_iwmr3"]
+[ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="7_tdc8a"]
 
 [node name="Topbar" type="PanelContainer"]
 offset_right = 1920.0
@@ -14,6 +16,7 @@ offset_bottom = 101.0
 script = ExtResource("1_h2uq7")
 obstacle_scene = ExtResource("2_qous1")
 turret_scene = ExtResource("3_iwmr3")
+herisson_scene = ExtResource("4_orvr8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -45,6 +48,11 @@ bbcode_enabled = true
 text = "[center][b]100"
 vertical_alignment = 1
 
+[node name="Empty2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
 [node name="KillsMCont" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -61,7 +69,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/KillsMCont/PanelContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_tdc8a")
+texture = ExtResource("5_eexb2")
 expand_mode = 2
 
 [node name="LabelKills" type="RichTextLabel" parent="HBoxContainer/KillsMCont/PanelContainer/HBoxContainer"]
@@ -75,7 +83,7 @@ vertical_alignment = 1
 [node name="Empty" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 7.0
+size_flags_stretch_ratio = 2.0
 
 [node name="SingeMcont" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -101,6 +109,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 23
 text = "Singe"
+
+[node name="HerissonMcont" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HerissonMcont"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HerissonMcont/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HerissonMcont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_tdc8a")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/HerissonMcont/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "Hérisson"
 
 [node name="ObstacleMcont" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
