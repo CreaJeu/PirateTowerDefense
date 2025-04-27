@@ -11,15 +11,14 @@ extends CharacterBody2D
 
 @onready var attack_range = $MeleeRange
 @onready var attack_timer = $MeleeAttackTimer
-@onready var nav_agent = $NavigationAgent2D
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var slow_timer = $SlowTimer
 
 signal enemy_hit_base()
 	
 var obstacles_in_range: Array[StaticBody2D] = []
-
 var is_ready := false
-
+var construction_mask: TileMapLayer
 
 func initialize(target_node: Node2D, start_position: Vector2):
 	target = target_node
@@ -42,7 +41,23 @@ func _physics_process(delta):
 		return
 	if nav_agent.is_navigation_finished():
 		return	
-		
+	
+	var cell = construction_mask.local_to_map(global_position)
+			
+	var tile_data = construction_mask.get_cell_tile_data(cell)
+	if tile_data == null:
+		return # Out of map bounds
+	
+	var tile_type: String = tile_data.get_custom_data("type")
+	var on_water = false
+	
+	match tile_type:
+		"water":
+			on_water = true
+		_:
+			on_water = false
+
+			
 	if obstacles_in_range.is_empty():
 		var next_path_point = nav_agent.get_next_path_position()
 		var direction = (next_path_point - global_position).normalized()
@@ -50,16 +65,32 @@ func _physics_process(delta):
 		velocity = direction * speed
 		move_and_slide()
 		# Animation control
-		if abs(direction.x) > abs(direction.y):
-			if direction.x > 0:
-				$AnimatedSprite2D.play("right")
+		if on_water:
+			$AnimatedSprite2D.visible = false
+			$BoatSprite.visible = true
+			if abs(direction.x) > abs(direction.y):
+				if direction.x > 0:
+					$BoatSprite.texture = load("res://assets/sprites/enemy/boat/BateauDroit.png")
+				else:
+					$BoatSprite.texture = load("res://assets/sprites/enemy/boat/BateauGauche.png")
 			else:
-				$AnimatedSprite2D.play("left")
+				if direction.y > 0:
+					$BoatSprite.texture = load("res://assets/sprites/enemy/boat/BateauBas.png")
+				else:
+					$BoatSprite.texture = load("res://assets/sprites/enemy/boat/BateauHaut.png")
 		else:
-			if direction.y > 0:
-				$AnimatedSprite2D.play("down")
+			$AnimatedSprite2D.visible = true
+			$BoatSprite.visible = false
+			if abs(direction.x) > abs(direction.y):
+				if direction.x > 0:
+					$AnimatedSprite2D.play("right")
+				else:
+					$AnimatedSprite2D.play("left")
 			else:
-				$AnimatedSprite2D.play("up")
+				if direction.y > 0:
+					$AnimatedSprite2D.play("down")
+				else:
+					$AnimatedSprite2D.play("up")
 
 				
 func _on_attack_range_body_entered(body):

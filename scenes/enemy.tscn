@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpxm4hhhbj3ab"]
+[gd_scene load_steps=22 format=3 uid="uid://dpxm4hhhbj3ab"]
 
 [ext_resource type="Script" uid="uid://kyurd04tghir" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://blmpjebb0t22y" path="res://assets/sprites/enemy/PirateDown/Pirate1Down.png" id="2_ipns3"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dn45bk0vqj2gp" path="res://assets/sprites/enemy/PirateUp/PirateUp3.png" id="15_wrm80"]
 [ext_resource type="Texture2D" uid="uid://drqu37653rfmx" path="res://assets/sprites/enemy/PirateUp/PirateUp4.png" id="16_6awcb"]
 [ext_resource type="Texture2D" uid="uid://0dl8foq4h3an" path="res://assets/sprites/enemy/PirateUp/PirateUp5.png" id="17_wjec0"]
+[ext_resource type="Texture2D" uid="uid://dttenj2olrv4m" path="res://assets/sprites/enemy/boat/BateauDroit.png" id="18_ile5s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8qclf"]
 animations = [{
@@ -102,8 +103,7 @@ script = ExtResource("1_4gyqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8qclf")
-animation = &"right"
-frame_progress = 0.162532
+animation = &"down"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false
@@ -119,3 +119,8 @@ shape = SubResource("CircleShape2D_md0e3")
 
 [node name="SlowTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="BoatSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("18_ile5s")

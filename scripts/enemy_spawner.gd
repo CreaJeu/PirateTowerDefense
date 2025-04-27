@@ -37,6 +37,7 @@ func spawn_enemy():
 	enemy.global_position = spawn_pos
 	var base = $"../Base"
 	enemy.target = base
+	enemy.construction_mask = $"../ConstructionMask"
 	
 	var min_value = 0.8
 	var max_value = 1.2
