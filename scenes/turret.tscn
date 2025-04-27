@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0kwqqja08e8o"]
+[gd_scene load_steps=14 format=3 uid="uid://c0kwqqja08e8o"]
 
 [ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/turret.gd" id="1_el7wl"]
 [ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_485p4"]
@@ -7,6 +7,9 @@
 [ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="5_mqfwu"]
 [ext_resource type="Texture2D" uid="uid://crj4olbxk6321" path="res://assets/UI/AtkSpd.png" id="6_0dv4j"]
 [ext_resource type="Texture2D" uid="uid://du1uq1gf663oi" path="res://assets/UI/Portee.png" id="7_tg0ex"]
+[ext_resource type="AudioStream" uid="uid://dtphf02hwk6ac" path="res://assets/audio/MonkeyPose01.mp3" id="8_eo4u0"]
+[ext_resource type="AudioStream" uid="uid://b5g0dyjk7beuw" path="res://assets/audio/MonkeyPose02.mp3" id="9_6k4ik"]
+[ext_resource type="AudioStream" uid="uid://bhyi1hdgg564n" path="res://assets/audio/MonkeyPose03.mp3" id="10_fp1kq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_485p4"]
 
@@ -96,6 +99,17 @@ alignment = 0
 shape = SubResource("CircleShape2D_el7wl")
 
 [node name="FiringCooldown" type="Timer" parent="."]
+
+[node name="SpawnAudioContainer" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SpawnAudioContainer"]
+stream = ExtResource("8_eo4u0")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SpawnAudioContainer"]
+stream = ExtResource("9_6k4ik")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SpawnAudioContainer"]
+stream = ExtResource("10_fp1kq")
 
 [connection signal="pressed" from="Button" to="." method="show_upgrade_menu"]
 [connection signal="mouse_exited" from="ConstructionRestriction" to="." method="hide_upgrade_menu"]

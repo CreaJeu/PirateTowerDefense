@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chojig3y8btat"
+path="res://.godot/imported/Blackmoor Tides (No Chants).mp3-50adb08d383a2d3658cceb3ebb0ffa1a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Blackmoor Tides (No Chants).mp3"
+dest_files=["res://.godot/imported/Blackmoor Tides (No Chants).mp3-50adb08d383a2d3658cceb3ebb0ffa1a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

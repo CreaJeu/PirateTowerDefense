@@ -41,6 +41,9 @@ func _ready():
 	upgrade_range_button.pressed.connect(upgrade_range)
 	
 	Gamestate.money_changed.connect(check_money)
+	$SpawnAudioContainer.get_children()[randf_range(0,2)].play()
+
+	
 
 	
 func _process(delta):
@@ -69,6 +72,7 @@ func _rotate_toward(target: Node2D, delta: float):
 			
 func place():
 	$Button.show()
+	
 
 func get_size() -> Vector2:
 	return Vector2($Sprite2D.texture.get_width(), $Sprite2D.texture.get_height())
