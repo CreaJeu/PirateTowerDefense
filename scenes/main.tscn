@@ -103,6 +103,7 @@ placed = true
 
 [node name="Herisson" parent="Turrets" instance=ExtResource("9_jbj1t")]
 position = Vector2(629, 524)
+placed = true
 
 [node name="Lama" parent="Turrets" instance=ExtResource("10_muem4")]
 position = Vector2(520, 681)

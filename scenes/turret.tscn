@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0kwqqja08e8o"]
+[gd_scene load_steps=10 format=3 uid="uid://c0kwqqja08e8o"]
 
 [ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/turret.gd" id="1_el7wl"]
 [ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_485p4"]
@@ -75,8 +75,8 @@ texture = ExtResource("5_dirdf")
 
 [node name="ProjSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Projectile speed upgrade (20)"
 theme = ExtResource("5_mqfwu")
+text = "Projectile speed upgrade (20)"
 alignment = 0
 
 [node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
@@ -85,8 +85,8 @@ texture = ExtResource("4_6fjxm")
 
 [node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Range upgrade (20)"
 theme = ExtResource("5_mqfwu")
+text = "Range upgrade (20)"
 alignment = 0
 
 [node name="FiringArea" type="Area2D" parent="."]

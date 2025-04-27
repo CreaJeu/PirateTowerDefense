@@ -1,19 +1,26 @@
 class_name Herisson
 extends StaticBody2D
 
-@export var projectile_scene: PackedScene
 @export var fire_rate: float = 0.2 # seconds per shot
-@export var projectile_speed: float = 500.0
 @export var is_active: bool = true
 @export var restriction_width_tiles: int = 6
 @export var restriction_height_tiles: int = 6
+@export var placed: bool = false
 @export var damage = 1
 @export var max_health: int = 20
+
+var current_hp_upgrade = 1
+var current_attack_speed_upgrade = 1
+var current_range_upgrade = 1
 
 var health: int
 var enemies_in_range: Array[Node2D] = []
 
 @onready var fire_timer: Timer = $FiringCooldown
+@onready var upgrade_attack_speed_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/AttackSpeedButton
+@onready var upgrade_range_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/RangeButton
+@onready var upgrade_hp_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/HPButton
+
 
 func _ready():
 	$ConstructionRestriction.add_to_group("build_blocker")
@@ -23,6 +30,18 @@ func _ready():
 	fire_timer.start()
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	health = max_health
+		
+	if (placed):
+		$Button.show()
+
+	upgrade_attack_speed_button.pressed.connect(upgrade_attack_speed)
+	upgrade_range_button.pressed.connect(upgrade_range)
+	upgrade_hp_button.pressed.connect(upgrade_hp)
+
+	Gamestate.money_changed.connect(check_money)
+
+func place():
+	$Button.show()
 
 func get_size() -> Vector2:
 	return Vector2($Sprite2D.texture.get_width(), $Sprite2D.texture.get_height())
@@ -107,3 +126,63 @@ func shake(duration = 0.2, strength = 5.0):
 	# Final tween to return to original position
 	tween.chain().tween_property(self, "position", original_position, 0.1)
 	tween.play()
+
+
+func show_upgrade_menu():
+	$UpgradeMenuPanel.show()
+	
+func hide_upgrade_menu():
+	$UpgradeMenuPanel.hide()
+
+func upgrade_hp():
+	if current_hp_upgrade >= 5:
+		upgrade_hp_button.disabled = true
+		print("current_hp_upgrade maxed")
+		return
+	
+	if not (Gamestate.spend_money(20)):
+		return
+	
+	health += 10
+	max_health += 10
+	
+	current_hp_upgrade += 1
+
+func upgrade_range():
+	if current_range_upgrade >= 5:
+		upgrade_range_button.disabled = true
+		print("upgrade_range maxed")
+		return
+	
+	if not (Gamestate.spend_money(20)):
+		return
+	
+	$FiringArea/FiringRange.shape.radius += 10
+	
+	current_range_upgrade += 1
+
+func upgrade_attack_speed():
+	if current_attack_speed_upgrade >= 5:
+		upgrade_attack_speed_button.disabled = true
+		print("current_attack_speed_upgrade maxed")
+		return
+	
+	if not (Gamestate.spend_money(20)):
+		return
+		
+	fire_rate -= 0.03
+	
+	current_attack_speed_upgrade += 1
+
+func check_money(current_money: int):
+	if current_money < 20:
+		upgrade_attack_speed_button.disabled = true
+		upgrade_range_button.disabled = true
+		upgrade_hp_button.disabled = true
+	else:
+		if current_attack_speed_upgrade < 5:
+			upgrade_attack_speed_button.disabled = false
+		if current_range_upgrade < 5:
+			upgrade_range_button.disabled = false
+		if current_hp_upgrade < 5:
+			upgrade_hp_button.disabled = false

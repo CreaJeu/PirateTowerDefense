@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://daiy41eawth0k"]
+[gd_scene load_steps=10 format=3 uid="uid://daiy41eawth0k"]
 
 [ext_resource type="Script" uid="uid://chn6nnmuqif8b" path="res://scripts/herisson.gd" id="1_518lq"]
 [ext_resource type="Texture2D" uid="uid://dnlw8hk30qpyi" path="res://assets/sprites/projectiles/epines.png" id="2_qbpr3"]
 [ext_resource type="Texture2D" uid="uid://cmfn5u2kyfhxl" path="res://assets/sprites/structure/herisson.png" id="3_qbpr3"]
+[ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="4_vh272"]
+[ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="5_0tnnh"]
+[ext_resource type="Texture2D" uid="uid://cvmj2ud8tqdaf" path="res://assets/sprites/PUMPKIN2.png" id="6_mq2e1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_518lq"]
-radius = 66.0076
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6b4mt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbpr3"]
 radius = 16.1245
@@ -15,6 +17,15 @@ radius = 106.0
 
 [node name="Herisson" type="StaticBody2D"]
 script = ExtResource("1_518lq")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = -14.0
+offset_top = -16.0
+offset_right = 14.0
+offset_bottom = 16.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6b4mt")
+flat = true
 
 [node name="PhysicalShape" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -45,3 +56,52 @@ shape = SubResource("CircleShape2D_518lq")
 [node name="PhysicalShape" type="CollisionShape2D" parent="ConstructionRestriction"]
 position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_qbpr3")
+
+[node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="UpgradeMenuPanel/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_vh272")
+
+[node name="AttackSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("5_0tnnh")
+text = "Attack Speed Upgrade (20)"
+alignment = 0
+
+[node name="TextureRect2" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_mq2e1")
+
+[node name="HPButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("5_0tnnh")
+text = "Health upgrade (20)"
+alignment = 0
+
+[node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_vh272")
+
+[node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("5_0tnnh")
+text = "Range upgrade (20)"
+alignment = 0
+
+[connection signal="pressed" from="Button" to="." method="show_upgrade_menu"]
+[connection signal="mouse_exited" from="ConstructionRestriction" to="." method="hide_upgrade_menu"]
