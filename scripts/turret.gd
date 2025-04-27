@@ -9,6 +9,7 @@ extends StaticBody2D
 @export var restriction_height_tiles: int = 6
 @export var placed: bool = false
 @export var max_health: int = 20
+@export var rotation_speed: float = 10.0  # How quickly the turret rotates to face enemies
 
 var health: int
 var enemies_in_range: Array[Node2D] = []
@@ -27,7 +28,31 @@ func _ready():
 	if (placed):
 		$Button.show()
 	health = max_health
+	
+func _process(delta):
+	# Handle rotation toward target if there are enemies
+	if not enemies_in_range.is_empty() and is_active:
+		var target = get_closest_enemy()
+		if target:
+			_rotate_toward(target, delta)
 
+func _rotate_toward(target: Node2D, delta: float):
+	# Calculate the angle to the target
+	var direction = (target.global_position - global_position).normalized()
+	var target_angle = direction.angle() - PI/2
+	
+	# Get the current rotation
+	var current_angle = $Sprite2D.rotation
+
+	# Calculate the shortest rotation direction
+	var angle_diff = wrapf(target_angle - current_angle, -PI, PI)
+
+	# Apply smooth rotation
+	if abs(angle_diff) > 0.01:  # Small threshold to prevent jittering
+		$Sprite2D.rotation += sign(angle_diff) * min(rotation_speed * delta, abs(angle_diff))
+	else:
+		$Sprite2D.rotation = target_angle
+			
 func place():
 	$Button.show()
 
