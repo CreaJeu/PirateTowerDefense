@@ -92,6 +92,7 @@ func attack_obstacle(obstacle: Obstacle):
 
 func die():
 	Signals.enemy_died.emit(money_on_death)
+	visual_damage(0.2)
 	queue_free()
 	
 func hit_taken(damage_taken):
@@ -100,9 +101,11 @@ func hit_taken(damage_taken):
 	if(health<0):
 		die()
 	else:
-		# Flash red
-		$AnimatedSprite2D.modulate = Color(1, 0, 0) # Red
-		# Wait a short time then reset color
-		await get_tree().create_timer(0.05).timeout
-		$AnimatedSprite2D.modulate = Color(1, 1, 1) # Default (white, no tint)
-	
+		visual_damage(0.15)
+		
+		
+func visual_damage(time: float):
+	$AnimatedSprite2D.modulate = Color(1, 0, 0) # Red
+	# Wait a short time then reset color
+	await get_tree().create_timer(time).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1) # Default (white, no tint)

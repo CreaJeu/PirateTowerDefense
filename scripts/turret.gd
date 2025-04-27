@@ -1,6 +1,5 @@
 class_name Turret
 extends Area2D
-
 @export var projectile_scene: PackedScene
 @export var fire_rate: float = 1.0 # seconds per shot
 @export var projectile_speed: float = 500.0
@@ -52,6 +51,7 @@ func get_closest_enemy() -> Node2D:
 	return closest
 
 func shoot_at(target: Node2D):
+
 	var projectile = projectile_scene.instantiate()
 	projectile.global_position = global_position
 	projectile.direction = (target.global_position - global_position).normalized()
