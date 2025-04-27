@@ -4,6 +4,8 @@ extends PanelContainer
 @onready var button_obstacle = $HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer/Button
 @onready var button_turret = $HBoxContainer/SingeMcont/PanelContainer/HBoxContainer/Button
 @onready var button_herisson = $HBoxContainer/HerissonMcont/PanelContainer/HBoxContainer/Button
+@onready var button_lama = $HBoxContainer/LamaMcont/PanelContainer/HBoxContainer/Button
+
 @onready var label_money = $HBoxContainer/MoneyMCont/PanelContainer/HBoxContainer/LabelMoney
 @onready var label_kills = $HBoxContainer/KillsMCont/PanelContainer/HBoxContainer/LabelKills
 
@@ -11,15 +13,24 @@ extends PanelContainer
 @export var obstacle_scene: PackedScene
 @export var turret_scene: PackedScene
 @export var herisson_scene: PackedScene
+@export var lama_scene: PackedScene
 
 func _ready():
 	Gamestate.money_changed.connect(update_money)
 	update_money(Gamestate.money)
 		
 	button_obstacle.pressed.connect(on_button_obstacle)
-	button_turret.pressed.connect(on_button_turret)
-	button_herisson.pressed.connect(on_button_herisson)
+	button_obstacle.text = "Obstacle\n("+str(build_manager.obstacle_cost)+")"
 	
+	button_turret.pressed.connect(on_button_turret)
+	button_turret.text = "Singe\n("+str(build_manager.turret_cost)+")"
+	
+	button_herisson.pressed.connect(on_button_herisson)
+	button_herisson.text = "Hérisson\n("+str(build_manager.herisson_cost)+")"
+	
+	button_lama.pressed.connect(on_button_lama)
+	button_lama.text = "Lama\n("+str(build_manager.lama_cost)+")"
+
 	Signals.enemy_died.connect(update_kills)
 	update_kills(0)
 
@@ -30,12 +41,17 @@ func update_money(money: int):
 		button_turret.disabled = true
 	else:
 		button_turret.disabled = false
-	
+		
 	if build_manager.herisson_cost > money:
 		button_turret.disabled = true
 	else:
 		button_turret.disabled = false
-	
+		
+	if build_manager.lama_cost > money:
+		button_lama.disabled = true
+	else:
+		button_lama.disabled = false
+
 	if build_manager.obstacle_cost > money:
 		button_obstacle.disabled = true
 	else:
@@ -52,3 +68,6 @@ func on_button_turret():
 
 func on_button_herisson():
 	build_manager.start_build(herisson_scene, build_manager.herisson_cost)
+
+func on_button_lama():
+	build_manager.start_build(lama_scene, build_manager.lama_cost)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0kwqqja08e8o"]
+[gd_scene load_steps=9 format=3 uid="uid://c0kwqqja08e8o"]
 
 [ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/turret.gd" id="1_el7wl"]
 [ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_485p4"]
@@ -82,12 +82,12 @@ layout_mode = 2
 text = "Reward bonus"
 alignment = 0
 
-[connection signal="mouse_exited" from="." to="." method="hide_upgrade_menu"]
-[connection signal="pressed" from="Button" to="." method="show_upgrade_menu"]
-
 [node name="FiringArea" type="Area2D" parent="."]
 
 [node name="FiringRange" type="CollisionShape2D" parent="FiringArea"]
 shape = SubResource("CircleShape2D_el7wl")
 
 [node name="FiringCooldown" type="Timer" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="show_upgrade_menu"]
+[connection signal="mouse_exited" from="ConstructionRestriction" to="." method="hide_upgrade_menu"]

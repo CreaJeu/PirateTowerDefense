@@ -3,9 +3,13 @@ extends Node2D
 
 @export var obstacle_scene: PackedScene
 @export var turret_scene: PackedScene
+@export var lama_scene: PackedScene
+
 @export var obstacle_cost: int = 70
 @export var turret_cost: int = 100
 @export var herisson_cost: int = 70
+@export var lama_cost: int = 120
+
 @export var construction_mask: TileMapLayer
 
 @onready var obstacles = $"../Obstacles"
@@ -37,7 +41,7 @@ func start_build(scene: PackedScene, cost: int):
 	ghost_instance.set_collision_layer(0)
 	ghost_instance.set_collision_mask(1)
 	
-	if ghost_instance is Turret or ghost_instance is Herisson:
+	if ghost_instance is Turret or ghost_instance is Herisson or ghost_instance is Lama:
 		ghost_instance.is_active = false
 		ghost_instance.get_node("FiringArea/FiringRange").disabled = true
 
@@ -59,8 +63,8 @@ func _process(delta):
 	var valid = false
 	
 	if ghost_instance is Obstacle:
-		valid = can_build_at(ghost_instance.global_position, 12, 4, ghost_instance.rotation)
-	if ghost_instance is Turret or ghost_instance is Herisson:
+		valid = can_build_at(ghost_instance.global_position, 6, 2, ghost_instance.rotation)
+	if ghost_instance is Turret or ghost_instance is Herisson or ghost_instance is Lama:
 		var turret_size: Vector2 = ghost_instance.get_size()
 		valid = can_build_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
 		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, ghost_instance.rotation
@@ -103,7 +107,7 @@ func try_place(is_blocked):
 	
 	if real_instance is Obstacle:
 		reserve_area_at(real_instance.global_position, 6, 2, blocked_land_atlas_coords, real_instance.rotation)
-	if real_instance is Turret or real_instance is Herisson:
+	if real_instance is Turret or real_instance is Herisson or ghost_instance is Lama:
 		var turret_size: Vector2 = ghost_instance.get_size()
 		reserve_area_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
 		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, blocked_land_atlas_coords, ghost_instance.rotation
