@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw1waua8p1rsh"]
+[gd_scene load_steps=13 format=3 uid="uid://cw1waua8p1rsh"]
 
 [ext_resource type="Script" uid="uid://xj0n2qew2oyj" path="res://scripts/topbar.gd" id="1_h2uq7"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="2_qous1"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dpya8rmoqejip" path="res://scenes/allies/lama.tscn" id="5_kkl76"]
 [ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="6_eexb2"]
 [ext_resource type="Texture2D" uid="uid://drhx7ylohcbmh" path="res://assets/sprites/structure/barricade.png" id="6_iwmr3"]
-[ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="7_tdc8a"]
 [ext_resource type="Texture2D" uid="uid://cmfn5u2kyfhxl" path="res://assets/sprites/structure/herisson.png" id="8_y6371"]
+[ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="9_bql76"]
 [ext_resource type="Texture2D" uid="uid://c8h7ovyikhd7f" path="res://assets/sprites/structure/lama.png" id="11_kkl76"]
 
 [node name="Topbar" type="PanelContainer"]
@@ -138,6 +138,7 @@ expand_mode = 2
 [node name="Button" type="Button" parent="HBoxContainer/SingeMcont/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9_bql76")
 theme_override_font_sizes/font_size = 23
 text = "Singe"
 
@@ -163,6 +164,7 @@ expand_mode = 2
 [node name="Button" type="Button" parent="HBoxContainer/HerissonMcont/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9_bql76")
 theme_override_font_sizes/font_size = 23
 text = "Hérisson"
 
@@ -188,6 +190,7 @@ expand_mode = 2
 [node name="Button" type="Button" parent="HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9_bql76")
 theme_override_font_sizes/font_size = 23
 text = "Obstacle"
 
@@ -213,5 +216,6 @@ expand_mode = 2
 [node name="Button" type="Button" parent="HBoxContainer/LamaMcont/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9_bql76")
 theme_override_font_sizes/font_size = 23
 text = "Lama"
