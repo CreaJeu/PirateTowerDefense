@@ -39,7 +39,7 @@ func start_build(scene: PackedScene, cost: int):
 	
 	if ghost_instance is Turret or ghost_instance is Herisson:
 		ghost_instance.is_active = false
-		ghost_instance.get_node("FiringRange").disabled = true
+		ghost_instance.get_node("FiringArea/FiringRange").disabled = true
 
 	add_child(ghost_instance)
 

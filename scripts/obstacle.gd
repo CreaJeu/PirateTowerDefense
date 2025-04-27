@@ -9,7 +9,6 @@ func _ready():
 	$ConstructionRestriction.add_to_group("obstacles")
 	add_to_group("build_blocker")
 	
-
 func shake(duration = 0.2, strength = 5.0):
 	# Store the original position
 	var original_position = position

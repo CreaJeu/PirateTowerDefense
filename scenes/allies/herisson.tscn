@@ -1,17 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://daiy41eawth0k"]
 
-[ext_resource type="Script" path="res://scripts/herisson.gd" id="1_518lq"]
+[ext_resource type="Script" uid="uid://chn6nnmuqif8b" path="res://scripts/herisson.gd" id="1_518lq"]
 [ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="1_w8xig"]
 [ext_resource type="Texture2D" uid="uid://dnlw8hk30qpyi" path="res://assets/sprites/projectiles/epines.png" id="2_qbpr3"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_518lq"]
-radius = 106.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbpr3"]
 radius = 18.1108
 
-[node name="Herisson" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_518lq"]
+radius = 106.0
+
+[node name="Herisson" type="StaticBody2D"]
 script = ExtResource("1_518lq")
+
+[node name="PhysicalShape" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_qbpr3")
 
 [node name="Epines" type="Node2D" parent="."]
 
@@ -28,12 +32,14 @@ texture = ExtResource("1_w8xig")
 
 [node name="FiringCooldown" type="Timer" parent="."]
 
-[node name="FiringRange" type="CollisionShape2D" parent="."]
+[node name="FiringArea" type="Area2D" parent="."]
+
+[node name="FiringRange" type="CollisionShape2D" parent="FiringArea"]
 position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_518lq")
 
-[node name="BuildRestriction" type="Area2D" parent="."]
+[node name="ConstructionRestriction" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildRestriction"]
+[node name="PhysicalShape" type="CollisionShape2D" parent="ConstructionRestriction"]
 position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_qbpr3")

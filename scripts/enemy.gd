@@ -14,7 +14,8 @@ extends CharacterBody2D
 
 signal enemy_hit_base()
 	
-var obstacles_in_range: Array[Obstacle] = []
+var obstacles_in_range: Array[StaticBody2D] = []
+
 var is_ready := false
 
 
@@ -59,14 +60,14 @@ func _physics_process(delta):
 
 				
 func _on_attack_range_body_entered(body):
-	if body is Obstacle:
+	if body is Obstacle or body is Turret or body is Herisson:
 		obstacles_in_range.append(body)
 		if not attack_timer.is_stopped():
 			return
 		attack_timer.start()
 		
 func _on_attack_range_body_exited(body):
-	if body is Obstacle:
+	if body is Obstacle or body is Turret or body is Herisson:
 		obstacles_in_range.erase(body)
 		if obstacles_in_range.is_empty():
 			attack_timer.stop()
@@ -76,7 +77,6 @@ func _on_hit_base():
 	Signals.enemy_died.emit(money_on_death)
 	queue_free()
 	
-	
 func _on_attack_timer_timeout():
 	if obstacles_in_range.is_empty():
 		return
@@ -84,7 +84,10 @@ func _on_attack_timer_timeout():
 	var obstacle = obstacles_in_range[0]
 	attack_obstacle(obstacle)
 		
-func attack_obstacle(obstacle: Obstacle):
+func attack_obstacle(obstacle: StaticBody2D):
+	if not (obstacle is Obstacle or obstacle is Turret or obstacle is Herisson):
+		return
+	
 	if is_instance_valid(obstacle):
 		obstacle.take_damage(damage)
 	else:
