@@ -38,6 +38,9 @@ func _on_fire_timer_timeout():
 	projectile_animation()
 	for target in enemies_in_range:
 		target.hit_taken(damage)
+	var rotation_tween = create_tween()
+	var target_rotation = $Sprite2D.rotation + deg_to_rad(360)  # Rotate by 360 degrees
+	rotation_tween.tween_property($Sprite2D, "rotation", target_rotation, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		
 func projectile_animation():
 	var directions = [
