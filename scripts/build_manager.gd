@@ -95,6 +95,10 @@ func try_place(is_blocked):
 	var real_instance = building_scene.instantiate()
 	real_instance.global_position = ghost_instance.global_position
 	real_instance.rotation = ghost_instance.rotation
+	
+	if real_instance is Turret:
+		real_instance.place()
+		
 	obstacles.add_child(real_instance)
 	
 	if real_instance is Obstacle:

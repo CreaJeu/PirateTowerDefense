@@ -7,6 +7,7 @@ extends StaticBody2D
 @export var is_active: bool = true
 @export var restriction_width_tiles: int = 6
 @export var restriction_height_tiles: int = 6
+@export var placed: bool = false
 @export var max_health: int = 20
 
 var health: int
@@ -22,7 +23,13 @@ func _ready():
 	fire_timer.wait_time = fire_rate
 	fire_timer.start()
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
+	
+	if (placed):
+		$Button.show()
 	health = max_health
+
+func place():
+	$Button.show()
 
 func get_size() -> Vector2:
 	return Vector2($Sprite2D.texture.get_width(), $Sprite2D.texture.get_height())
@@ -61,6 +68,12 @@ func shoot_at(target: Node2D):
 	projectile.direction = (target.global_position - global_position).normalized()
 	projectile.speed = projectile_speed
 	get_tree().current_scene.add_child(projectile)
+
+func show_upgrade_menu():
+	$PanelContainer.show()
+	
+func hide_upgrade_menu():
+	$PanelContainer.hide()
 
 func get_overlapping_bodies():
 	return $ConstructionRestriction.get_overlapping_bodies()
