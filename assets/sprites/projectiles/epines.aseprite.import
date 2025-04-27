@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bnxx5bd33s72u"
+path="res://.godot/imported/epines.aseprite-1f5ef48d11aa1c83e30115f8d1f62db2.res"
+
+[deps]
+
+source_file="res://assets/sprites/projectiles/epines.aseprite"
+dest_files=["res://.godot/imported/epines.aseprite-1f5ef48d11aa1c83e30115f8d1f62db2.res"]
+
+[params]
+
