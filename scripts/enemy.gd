@@ -1,6 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
+@export var initial_speed = 100.0
 @export var speed = 100.0
 @export var damage = 10.0
 @export var money_on_death = 10.0
@@ -11,6 +12,7 @@ extends CharacterBody2D
 @onready var attack_range = $MeleeRange
 @onready var attack_timer = $MeleeAttackTimer
 @onready var nav_agent = $NavigationAgent2D
+@onready var slow_timer = $SlowTimer
 
 signal enemy_hit_base()
 	
@@ -22,16 +24,18 @@ func initialize(target_node: Node2D, start_position: Vector2):
 	target = target_node
 	global_position = start_position
 	nav_agent.target_position = target.global_position
-	is_ready = true
 	
 func _ready():
+
 	add_to_group("enemies")
 	$Hitbox.add_to_group("build_blocker")
 	enemy_hit_base.connect(_on_hit_base)
 	attack_range.body_entered.connect(_on_attack_range_body_entered)
 	attack_range.body_exited.connect(_on_attack_range_body_exited)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	slow_timer.timeout.connect(_on_slow_timer_timeout)
 	$AnimatedSprite2D.play("down")
+	is_ready = true
 
 func _physics_process(delta):
 	if not is_ready:
@@ -83,7 +87,8 @@ func _on_attack_timer_timeout():
 	
 	var obstacle = obstacles_in_range[0]
 	attack_obstacle(obstacle)
-		
+
+
 func attack_obstacle(obstacle: Obstacle):
 	if is_instance_valid(obstacle):
 		obstacle.take_damage(damage)
@@ -95,9 +100,15 @@ func die():
 	visual_damage(0.2)
 	queue_free()
 	
-func hit_taken(damage_taken):
+func hit_taken(damage_taken,slow_strength = 0,slow_duration = 0):
 	
 	health -= damage_taken
+	if(slow_strength != 0):
+		speed -= slow_strength
+		slow_timer.wait_time = slow_duration
+		slow_timer.start()
+	
+	
 	if(health<0):
 		die()
 	else:
@@ -109,3 +120,7 @@ func visual_damage(time: float):
 	# Wait a short time then reset color
 	await get_tree().create_timer(time).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1) # Default (white, no tint)
+
+
+func _on_slow_timer_timeout() -> void:
+	speed = initial_speed
