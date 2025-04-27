@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var damage = 10.0
 @export var money_on_death = 10.0
 @export var target: Node2D
+@export var health = 10.0
 
 
 @onready var attack_range = $MeleeRange
@@ -92,3 +93,16 @@ func attack_obstacle(obstacle: Obstacle):
 func die():
 	Signals.enemy_died.emit(money_on_death)
 	queue_free()
+	
+func hit_taken(damage_taken):
+	
+	health -= damage_taken
+	if(health<0):
+		die()
+	else:
+		# Flash red
+		$AnimatedSprite2D.modulate = Color(1, 0, 0) # Red
+		# Wait a short time then reset color
+		await get_tree().create_timer(0.05).timeout
+		$AnimatedSprite2D.modulate = Color(1, 1, 1) # Default (white, no tint)
+	
