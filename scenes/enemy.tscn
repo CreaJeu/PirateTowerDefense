@@ -97,6 +97,11 @@ radius = 17.1172
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_4gyqm")
+initial_speed = null
+speed = null
+damage = null
+money_on_death = null
+health = null
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -116,3 +121,8 @@ visible = false
 shape = SubResource("CircleShape2D_md0e3")
 
 [node name="MeleeAttackTimer" type="Timer" parent="."]
+
+[node name="SlowTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]

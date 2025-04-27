@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv2x5uatp3sw2"]
+
+[ext_resource type="Script" uid="uid://ddvuf4ommnwt5" path="res://scripts/bave_lama.gd" id="1_loiws"]
+[ext_resource type="Texture2D" uid="uid://dmeqlme5x6adi" path="res://assets/sprites/projectiles/bave_lama.png" id="2_loiws"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3m7n"]
+
+[node name="Bave" type="Area2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_loiws")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("2_loiws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q3m7n")

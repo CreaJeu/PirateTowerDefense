@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ko87rvhkt4en"
+path="res://.godot/imported/bave_lama.aseprite-34ad5e0c05fe33cfb8b2dfd42c2d8bb8.res"
+
+[deps]
+
+source_file="res://assets/sprites/projectiles/bave_lama.aseprite"
+dest_files=["res://.godot/imported/bave_lama.aseprite-34ad5e0c05fe33cfb8b2dfd42c2d8bb8.res"]
+
+[params]
+

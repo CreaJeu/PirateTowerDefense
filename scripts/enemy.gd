@@ -1,16 +1,18 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export var speed = 100.0
-@export var damage = 10.0
-@export var money_on_death = 10.0
-@export var target: Node2D
-@export var health = 10.0
+@onready var initial_speed = 100.0
+@onready var speed = 100.0
+@onready var damage = 10.0
+@onready var money_on_death = 10.0
+@onready var target: Node2D
+@onready var health = 10.0
 
 
 @onready var attack_range = $MeleeRange
 @onready var attack_timer = $MeleeAttackTimer
 @onready var nav_agent = $NavigationAgent2D
+@onready var slow_timer = $SlowTimer
 
 signal enemy_hit_base()
 	
@@ -23,7 +25,6 @@ func initialize(target_node: Node2D, start_position: Vector2):
 	target = target_node
 	global_position = start_position
 	nav_agent.target_position = target.global_position
-	is_ready = true
 	
 func _ready():
 	add_to_group("enemies")
@@ -32,7 +33,10 @@ func _ready():
 	attack_range.body_entered.connect(_on_attack_range_body_entered)
 	attack_range.body_exited.connect(_on_attack_range_body_exited)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	slow_timer.timeout.connect(_on_slow_timer_timeout)
 	$AnimatedSprite2D.play("down")
+	is_ready = true
+	
 
 func _physics_process(delta):
 	if not is_ready:
@@ -98,9 +102,16 @@ func die():
 	visual_damage(0.2)
 	queue_free()
 	
-func hit_taken(damage_taken):
+func hit_taken(damage_taken,slow_strength = 0,slow_duration = 0):
 	
 	health -= damage_taken
+	if(slow_strength != 0):
+		if(speed == initial_speed): #eviter d'accumuler du slow
+			speed -= slow_strength
+			slow_timer.wait_time = slow_duration
+			slow_timer.start()
+	
+	
 	if(health<0):
 		die()
 	else:
@@ -112,3 +123,7 @@ func visual_damage(time: float):
 	# Wait a short time then reset color
 	await get_tree().create_timer(time).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1) # Default (white, no tint)
+
+
+func _on_slow_timer_timeout() -> void:
+	speed = initial_speed
