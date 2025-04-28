@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dpxm4hhhbj3ab"]
+[gd_scene load_steps=23 format=3 uid="uid://dpxm4hhhbj3ab"]
 
 [ext_resource type="Script" uid="uid://kyurd04tghir" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://blmpjebb0t22y" path="res://assets/sprites/enemy/PirateDown/Pirate1Down.png" id="2_ipns3"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://drqu37653rfmx" path="res://assets/sprites/enemy/PirateUp/PirateUp4.png" id="16_6awcb"]
 [ext_resource type="Texture2D" uid="uid://0dl8foq4h3an" path="res://assets/sprites/enemy/PirateUp/PirateUp5.png" id="17_wjec0"]
 [ext_resource type="Texture2D" uid="uid://dttenj2olrv4m" path="res://assets/sprites/enemy/boat/BateauDroit.png" id="18_ile5s"]
+[ext_resource type="AudioStream" uid="uid://dvdkxb1qtkppn" path="res://assets/audio/dyingPirate.mp3" id="19_1x4g4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8qclf"]
 animations = [{
@@ -124,3 +125,7 @@ wait_time = 2.0
 visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("18_ile5s")
+
+[node name="DeathNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_1x4g4")
+volume_db = -10.846

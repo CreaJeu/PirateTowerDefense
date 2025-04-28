@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://c8h7ovyikhd7f" path="res://assets/sprites/structure/lama.png" id="3_ws7yr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_485p4"]
+resource_local_to_scene = true
 radius = 28.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el7wl"]
+resource_local_to_scene = true
 radius = 112.04
 
 [node name="Lama" type="StaticBody2D"]

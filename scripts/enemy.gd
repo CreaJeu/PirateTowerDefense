@@ -129,6 +129,7 @@ func attack_obstacle(obstacle: StaticBody2D):
 
 func die():
 	Signals.enemy_died.emit(money_on_death)
+	$DeathNoise.play()
 	visual_damage(0.2)
 	queue_free()
 	

@@ -14,9 +14,11 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_485p4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_485p4"]
+resource_local_to_scene = true
 radius = 18.1108
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el7wl"]
+resource_local_to_scene = true
 radius = 158.0
 
 [node name="Turret" type="StaticBody2D"]

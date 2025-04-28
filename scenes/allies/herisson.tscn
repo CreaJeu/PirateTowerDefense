@@ -11,9 +11,11 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6b4mt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbpr3"]
+resource_local_to_scene = true
 radius = 16.1245
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_518lq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tnnh"]
+resource_local_to_scene = true
 radius = 106.0
 
 [node name="Herisson" type="StaticBody2D"]
@@ -50,7 +52,7 @@ texture = ExtResource("3_qbpr3")
 
 [node name="FiringRange" type="CollisionShape2D" parent="FiringArea"]
 position = Vector2(2, 1)
-shape = SubResource("CircleShape2D_518lq")
+shape = SubResource("CircleShape2D_0tnnh")
 
 [node name="ConstructionRestriction" type="Area2D" parent="."]
 
