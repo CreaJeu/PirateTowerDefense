@@ -46,11 +46,12 @@ shape = SubResource("CircleShape2D_485p4")
 shape = SubResource("CircleShape2D_485p4")
 
 [node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+texture_filter = 1
+offset_right = 291.0
+offset_bottom = 100.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuPanel"]
+texture_filter = 1
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -58,36 +59,47 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="GridContainer" type="GridContainer" parent="UpgradeMenuPanel/MarginContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_constants/h_separation = 10
 columns = 2
 
 [node name="TextureRect" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("4_mqfwu")
 
 [node name="DamageButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 visible = false
+texture_filter = 1
 layout_mode = 2
 theme = ExtResource("5_mqfwu")
 text = "Damage bonus"
 alignment = 0
 
 [node name="TextureRect2" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("6_0dv4j")
 
 [node name="ProjSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+texture_filter = 1
 layout_mode = 2
 theme = ExtResource("5_mqfwu")
 text = "Projectile speed upgrade (20)"
 alignment = 0
 
 [node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("7_tg0ex")
 
 [node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+texture_filter = 1
 layout_mode = 2
 theme = ExtResource("5_mqfwu")
 text = "Range upgrade (20)"

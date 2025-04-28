@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=4 uid="uid://b61n3ww8i176b"]
 
-[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://ber7plm5axbh6" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://b6h5pgsyixgqd" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dpxm4hhhbj3ab" path="res://scenes/enemy.tscn" id="3_1bvp3"]
@@ -203,7 +203,7 @@ autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(915, 476)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.7, 1.7)
 limit_left = 0
 limit_top = 0
 limit_right = 1700

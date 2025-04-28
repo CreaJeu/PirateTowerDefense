@@ -75,6 +75,7 @@ layout_mode = 2
 columns = 2
 
 [node name="TextureRect" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("4_0tnnh")
 
@@ -85,6 +86,7 @@ text = "Attack Speed Upgrade (20)"
 alignment = 0
 
 [node name="TextureRect2" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("6_mq2e1")
 
@@ -95,6 +97,7 @@ text = "Health upgrade (20)"
 alignment = 0
 
 [node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("7_0tnnh")
 
