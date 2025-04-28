@@ -22,7 +22,6 @@ radius = 106.0
 script = ExtResource("1_518lq")
 
 [node name="Button" type="Button" parent="."]
-visible = false
 offset_left = -14.0
 offset_top = -16.0
 offset_right = 14.0
@@ -62,7 +61,6 @@ shape = SubResource("CircleShape2D_qbpr3")
 
 [node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
 visible = false
-anchors_preset = -1
 offset_left = 20.0
 offset_top = -55.0
 

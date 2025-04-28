@@ -68,7 +68,6 @@ stream = ExtResource("10_fp1kq")
 [node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
 visible = false
 texture_filter = 1
-anchors_preset = -1
 offset_left = 21.0
 offset_top = -35.0
 
