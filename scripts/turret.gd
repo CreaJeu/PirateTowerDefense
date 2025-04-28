@@ -42,6 +42,7 @@ func _ready():
 	
 	Gamestate.money_changed.connect(check_money)
 	$SpawnAudioContainer.get_children()[randf_range(0,2)].play()
+	
 
 	
 
@@ -116,7 +117,7 @@ func show_upgrade_menu():
 	$UpgradeMenuPanel.show()
 	
 func hide_upgrade_menu():
-	$UpgradeMenuPanel.hide()
+	$	UpgradeMenuPanel.hide()
 
 func get_overlapping_bodies():
 	return $ConstructionRestriction.get_overlapping_bodies()

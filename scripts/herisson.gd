@@ -40,6 +40,7 @@ func _ready():
 	upgrade_hp_button.pressed.connect(upgrade_hp)
 
 	Gamestate.money_changed.connect(check_money)
+	
 
 func place():
 	$Button.show()

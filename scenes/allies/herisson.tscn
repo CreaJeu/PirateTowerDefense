@@ -62,8 +62,9 @@ shape = SubResource("CircleShape2D_qbpr3")
 
 [node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+offset_left = 20.0
+offset_top = -55.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuPanel"]
 layout_mode = 2
@@ -80,6 +81,7 @@ columns = 2
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("4_0tnnh")
+stretch_mode = 2
 
 [node name="AttackSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -91,6 +93,7 @@ alignment = 0
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("6_mq2e1")
+stretch_mode = 2
 
 [node name="HPButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -102,6 +105,7 @@ alignment = 0
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("7_0tnnh")
+stretch_mode = 2
 
 [node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
