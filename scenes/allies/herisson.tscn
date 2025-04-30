@@ -11,16 +11,17 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6b4mt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbpr3"]
+resource_local_to_scene = true
 radius = 16.1245
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_518lq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tnnh"]
+resource_local_to_scene = true
 radius = 106.0
 
 [node name="Herisson" type="StaticBody2D"]
 script = ExtResource("1_518lq")
 
 [node name="Button" type="Button" parent="."]
-visible = false
 offset_left = -14.0
 offset_top = -16.0
 offset_right = 14.0
@@ -50,7 +51,7 @@ texture = ExtResource("3_qbpr3")
 
 [node name="FiringRange" type="CollisionShape2D" parent="FiringArea"]
 position = Vector2(2, 1)
-shape = SubResource("CircleShape2D_518lq")
+shape = SubResource("CircleShape2D_0tnnh")
 
 [node name="ConstructionRestriction" type="Area2D" parent="."]
 
@@ -60,8 +61,8 @@ shape = SubResource("CircleShape2D_qbpr3")
 
 [node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 20.0
+offset_top = -55.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuPanel"]
 layout_mode = 2
@@ -78,6 +79,7 @@ columns = 2
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("4_0tnnh")
+stretch_mode = 2
 
 [node name="AttackSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -89,6 +91,7 @@ alignment = 0
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("6_mq2e1")
+stretch_mode = 2
 
 [node name="HPButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -100,6 +103,7 @@ alignment = 0
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("7_0tnnh")
+stretch_mode = 2
 
 [node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2

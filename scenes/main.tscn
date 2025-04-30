@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cuy0rosgbajo6" path="res://scenes/base.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turret.tscn" id="8_tipki"]
-[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://daiy41eawth0k" path="res://scenes/allies/herisson.tscn" id="9_jbj1t"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dpya8rmoqejip" path="res://scenes/allies/lama.tscn" id="10_muem4"]
@@ -104,7 +104,6 @@ placed = true
 
 [node name="Herisson" parent="Turrets" instance=ExtResource("9_jbj1t")]
 position = Vector2(629, 524)
-placed = true
 
 [node name="Lama" parent="Turrets" instance=ExtResource("10_muem4")]
 position = Vector2(520, 681)
@@ -116,18 +115,22 @@ turret_scene = ExtResource("8_tipki")
 construction_mask = NodePath("../ConstructionMask")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -978.0
+offset_top = -489.0
+offset_bottom = -1467.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Topbar" parent="CanvasLayer/UI" node_paths=PackedStringArray("build_manager") instance=ExtResource("10_ya4ey")]
 layout_mode = 0
+offset_top = 489.0
+offset_bottom = 590.0
 build_manager = NodePath("../../../BuildManager")
 
 [node name="GameOverMenu" type="Control" parent="CanvasLayer"]
@@ -203,7 +206,7 @@ autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(915, 476)
-zoom = Vector2(1.7, 1.7)
+zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
 limit_right = 1700

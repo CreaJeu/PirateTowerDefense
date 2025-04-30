@@ -1,13 +1,13 @@
 class_name Herisson
 extends StaticBody2D
 
-@export var fire_rate: float = 0.2 # seconds per shot
-@export var is_active: bool = true
-@export var restriction_width_tiles: int = 6
-@export var restriction_height_tiles: int = 6
-@export var placed: bool = false
-@export var damage = 1
-@export var max_health: int = 20
+var fire_rate: float = 0.2 # seconds per shot
+var is_active: bool = true
+var restriction_width_tiles: int = 6
+var restriction_height_tiles: int = 6
+var placed: bool = false
+var damage = 1
+var max_health: int = 20
 
 var current_hp_upgrade = 1
 var current_attack_speed_upgrade = 1
@@ -40,6 +40,7 @@ func _ready():
 	upgrade_hp_button.pressed.connect(upgrade_hp)
 
 	Gamestate.money_changed.connect(check_money)
+	
 
 func place():
 	$Button.show()
@@ -87,7 +88,7 @@ func projectile_animation():
 		spike.rotation = dir.angle() + deg_to_rad(90)
 
 		var tween = create_tween()
-		var target_position = spike.position + dir.normalized() * 100 # Adjust distance as needed
+		var target_position = spike.position + dir.normalized() * $FiringArea/FiringRange.shape.radius
 		tween.tween_property(spike, "position", target_position, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 		# Clean up the spike after it reaches its destination
