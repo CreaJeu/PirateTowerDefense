@@ -20,9 +20,9 @@ var health: int
 var enemies_in_range: Array[Node2D] = []
 
 @onready var fire_timer: Timer = $FiringCooldown
-@onready var upgrade_damage_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/DamageButton
-@onready var upgrade_proj_speed_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/ProjSpeedButton
-@onready var upgrade_range_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/RangeButton
+@onready var upgrade_damage_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/DamageButton
+@onready var upgrade_proj_speed_button: Button =$UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/ProjSpeedButton
+@onready var upgrade_range_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/RangeButton
 
 func _ready():
 	$ConstructionRestriction.add_to_group("build_blocker")
@@ -116,8 +116,10 @@ func shoot_at(target: Node2D):
 func show_upgrade_menu():
 	$UpgradeMenuPanel.show()
 	
-func hide_upgrade_menu():
-	$	UpgradeMenuPanel.hide()
+func _on_cross_pressed() -> void:
+	$UpgradeMenuPanel.hide()
+
+
 
 func get_overlapping_bodies():
 	return $ConstructionRestriction.get_overlapping_bodies()
