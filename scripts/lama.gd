@@ -47,6 +47,9 @@ func _ready():
 
 	Gamestate.money_changed.connect(check_money)
 
+func place():
+	$Button.show()
+
 func get_size() -> Vector2:
 	return Vector2($Sprite2D.texture.get_width(), $Sprite2D.texture.get_height())
 
