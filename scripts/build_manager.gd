@@ -4,6 +4,7 @@ extends Node2D
 @export var obstacle_scene: PackedScene
 @export var turret_scene: PackedScene
 @export var lama_scene: PackedScene
+@export var herisson_scene: PackedScene
 
 @export var obstacle_cost: int = 70
 @export var turret_cost: int = 100
@@ -103,11 +104,14 @@ func try_place(is_blocked):
 	if real_instance is Turret or real_instance is Herisson or real_instance is Lama:
 		real_instance.place()
 		
-	obstacles.add_child(real_instance)
+	if real_instance is Obstacle:
+		obstacles.add_child(real_instance)
+	else:
+		turrets.add_child(real_instance)
 	
 	if real_instance is Obstacle:
 		reserve_area_at(real_instance.global_position, 6, 2, blocked_land_atlas_coords, real_instance.rotation)
-	if real_instance is Turret or real_instance is Herisson or ghost_instance is Lama:
+	if real_instance is Turret or real_instance is Herisson or real_instance is Lama:
 		var turret_size: Vector2 = ghost_instance.get_size()
 		reserve_area_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
 		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, blocked_land_atlas_coords, ghost_instance.rotation

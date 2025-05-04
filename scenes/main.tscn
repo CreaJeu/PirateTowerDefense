@@ -112,6 +112,8 @@ position = Vector2(520, 681)
 script = ExtResource("9_ya4ey")
 obstacle_scene = ExtResource("4_lquwl")
 turret_scene = ExtResource("8_tipki")
+lama_scene = ExtResource("10_muem4")
+herisson_scene = ExtResource("9_jbj1t")
 construction_mask = NodePath("../ConstructionMask")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

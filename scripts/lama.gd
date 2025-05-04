@@ -1,27 +1,27 @@
 class_name Lama
 extends StaticBody2D
 @export var projectile_scene: PackedScene
-@export var fire_rate: float = 1.0 # seconds per shot
-@export var projectile_speed: float = 500.0
-@export var is_active: bool = true
-@export var restriction_width_tiles: int = 7
-@export var restriction_height_tiles: int = 7
-@export var damage: int = 2
-@export var slow_strength: int = 50
-@export var slow_duration: int = 2 
-@export var max_health: int = 20
+var fire_rate: float = 1.0 # seconds per shot
+var projectile_speed: float = 500.0
+var is_active: bool = true
+var restriction_width_tiles: int = 7
+var restriction_height_tiles: int = 7
+var damage: int = 2
+var slow_strength: int = 50
+var slow_duration: int = 2 
+var max_health: int = 20
 
 @onready var upgrade_attack_speed_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/AttackSpeedButton
-@onready var upgrade_slow_duration_button: Button =$UpgradeMenuPanel/MarginContainer/GridContainer/LongerSlowButton
+@onready var upgrade_slow_duration_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/LongerSlowButton
 @onready var upgrade_slow_strength_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/StrongerSlowButton
 @onready var placed: bool = false
 
 
 
-var current_slow_strength_upgrade = 1
-var current_attack_speed_upgrade = 1
-var current_slow_duration_upgrade = 1
-var current_lama_level = 1
+@onready var current_slow_strength_upgrade = 1
+@onready var current_attack_speed_upgrade = 1
+@onready var current_slow_duration_upgrade = 1
+@onready var current_lama_level = 1
 
 
 var health: int
@@ -47,11 +47,13 @@ func _ready():
 
 	Gamestate.money_changed.connect(check_money)
 
-func place():
-	$Button.show()
-
 func get_size() -> Vector2:
 	return Vector2($Sprite2D.texture.get_width(), $Sprite2D.texture.get_height())
+
+
+func place():
+	$Button.show()
+	placed = true
 
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
