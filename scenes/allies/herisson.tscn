@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://daiy41eawth0k"]
+[gd_scene load_steps=12 format=3 uid="uid://daiy41eawth0k"]
 
 [ext_resource type="Script" uid="uid://chn6nnmuqif8b" path="res://scripts/herisson.gd" id="1_518lq"]
 [ext_resource type="Texture2D" uid="uid://dnlw8hk30qpyi" path="res://assets/sprites/projectiles/epines.png" id="2_qbpr3"]
 [ext_resource type="Texture2D" uid="uid://cmfn5u2kyfhxl" path="res://assets/sprites/structure/herisson.png" id="3_qbpr3"]
 [ext_resource type="Texture2D" uid="uid://crj4olbxk6321" path="res://assets/UI/AtkSpd.png" id="4_0tnnh"]
+[ext_resource type="Texture2D" uid="uid://cxhdcp85cqtan" path="res://assets/menu/pirate-menu/Images/UI/X.png" id="4_mq2e1"]
 [ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="5_0tnnh"]
 [ext_resource type="Texture2D" uid="uid://dvvbtdiuh5l5a" path="res://assets/UI/HP.png" id="6_mq2e1"]
 [ext_resource type="Texture2D" uid="uid://du1uq1gf663oi" path="res://assets/UI/Portee.png" id="7_0tnnh"]
@@ -62,55 +63,86 @@ shape = SubResource("CircleShape2D_qbpr3")
 
 [node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
 visible = false
-offset_left = 20.0
-offset_top = -55.0
+texture_filter = 1
+offset_left = 21.0
+offset_top = -35.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuPanel"]
+texture_filter = 1
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="GridContainer" type="GridContainer" parent="UpgradeMenuPanel/MarginContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="UpgradeMenuPanel/MarginContainer"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 175
+
+[node name="Cross" type="TextureButton" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_mq2e1")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"pending_changes": {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": ""
+}
+}
+
+[node name="GridContainer" type="GridContainer" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/h_separation = 10
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("4_0tnnh")
 stretch_mode = 2
 
-[node name="AttackSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+[node name="AttackSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("5_0tnnh")
 text = "Attack Speed Upgrade (20)"
 alignment = 0
 
-[node name="TextureRect2" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+[node name="TextureRect2" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("6_mq2e1")
 stretch_mode = 2
 
-[node name="HPButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+[node name="HPButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("5_0tnnh")
 text = "Health upgrade (20)"
 alignment = 0
 
-[node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+[node name="TextureRect3" type="TextureRect" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("7_0tnnh")
 stretch_mode = 2
 
-[node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/GridContainer"]
+[node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("5_0tnnh")
 text = "Range upgrade (20)"
 alignment = 0
 
 [connection signal="pressed" from="Button" to="." method="show_upgrade_menu"]
-[connection signal="mouse_exited" from="ConstructionRestriction" to="." method="hide_upgrade_menu"]
+[connection signal="pressed" from="UpgradeMenuPanel/MarginContainer/VSplitContainer/MarginContainer/Cross" to="." method="_on_cross_pressed"]

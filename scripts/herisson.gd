@@ -18,9 +18,9 @@ var health: int
 var enemies_in_range: Array[Node2D] = []
 
 @onready var fire_timer: Timer = $FiringCooldown
-@onready var upgrade_attack_speed_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/AttackSpeedButton
-@onready var upgrade_range_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/RangeButton
-@onready var upgrade_hp_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/HPButton
+@onready var upgrade_attack_speed_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/AttackSpeedButton
+@onready var upgrade_range_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/RangeButton
+@onready var upgrade_hp_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/HPButton
 
 
 func _ready():
@@ -44,7 +44,6 @@ func _ready():
 
 func place():
 	$Button.show()
-	placed = true
 
 
 func get_size() -> Vector2:
@@ -135,9 +134,6 @@ func shake(duration = 0.2, strength = 5.0):
 func show_upgrade_menu():
 	$UpgradeMenuPanel.show()
 	
-func hide_upgrade_menu():
-	$UpgradeMenuPanel.hide()
-
 func upgrade_hp():
 	if current_hp_upgrade >= 5:
 		upgrade_hp_button.disabled = true
@@ -213,3 +209,7 @@ func check_herisson_level():
 		$Sprite2D.texture = load("res://assets/sprites/structure/herissonUpgrade3.png")
 		
 	
+
+
+func _on_cross_pressed() -> void:
+	$UpgradeMenuPanel.hide()

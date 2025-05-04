@@ -11,9 +11,9 @@ var slow_strength: int = 50
 var slow_duration: int = 2 
 var max_health: int = 20
 
-@onready var upgrade_attack_speed_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/AttackSpeedButton
-@onready var upgrade_slow_duration_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/LongerSlowButton
-@onready var upgrade_slow_strength_button: Button = $UpgradeMenuPanel/MarginContainer/GridContainer/StrongerSlowButton
+@onready var upgrade_attack_speed_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/AttackSpeedButton
+@onready var upgrade_slow_duration_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/StrongerSlowButton
+@onready var upgrade_slow_strength_button: Button = $UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer/LongerSlowButton
 @onready var placed: bool = false
 
 
@@ -203,5 +203,6 @@ func _on_button_pressed() -> void:
 	$UpgradeMenuPanel.show()
 
 
-func _on_construction_restriction_mouse_exited() -> void:
+
+func _on_cross_pressed() -> void:
 	$UpgradeMenuPanel.hide()
