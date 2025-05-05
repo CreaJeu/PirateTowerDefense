@@ -15,17 +15,26 @@ extends Node2D
 
 @onready var obstacles = $"../Obstacles"
 @onready var turrets = $"../Turrets"
+@onready var build_preview: TileMapLayer = $"../PreviewMask"
 
 var build_mode: bool = false
 var ghost_instance: Node2D
 var building_scene: PackedScene
 var building_cost: int
 
+
 var blocked_land_atlas_coords = Vector2i(0,0)
 var free_land_atlas_coords = Vector2i(2,0)
 
 func _ready() -> void:
 	Signals.obstacle_destroyed.connect(free_area_at)
+
+
+func previsualisation_placement(ghost_intance: Node2D):
+	if not build_mode: return
+	
+	
+	
 
 func start_build(scene: PackedScene, cost: int):
 	if ghost_instance:
@@ -61,7 +70,7 @@ func _process(delta):
 	
 	# Move ghost to mouse
 	ghost_instance.global_position = get_global_mouse_position()
-	var valid = false
+	var valid = update_preview(ghost_instance)
 	
 	if ghost_instance is Obstacle:
 		valid = can_build_at(ghost_instance.global_position, 6, 2, ghost_instance.rotation)
@@ -83,6 +92,34 @@ func _process(delta):
 	if Input.is_action_just_released("cancel_build"):
 		cancel_build()
 
+func update_preview(ghost: Node2D) -> bool:
+	build_preview.clear()
+	var valid = true
+	if ghost is not Herisson or ghost is not Lama or ghost is not Obstacle or ghost is not Turret: return false
+	var size = ghost.get_size()
+	var width = int(size.x)
+	var height = int(size.y)
+	var pos = ghost.global_position
+	var rotation = ghost.rotation
+
+	# Adjust position if necessary (e.g., for centered placement)
+	if ghost.has_method("get_preview_offset"):
+		pos += ghost.get_preview_offset()
+
+	for x in range(width):
+		for y in range(height):
+			var local_offset = Vector2(x, y)
+			local_offset = local_offset.rotated(rotation)
+			var world_pos = pos + local_offset * construction_mask.rendering_quadrant_size
+			var cell = construction_mask.local_to_map(world_pos)
+
+			var tile_data = construction_mask.get_cell_tile_data(cell)
+			if tile_data == null or tile_data.get_custom_data("type") in ["blocked_land", "water"]:
+				build_preview.set_cell(cell, construction_mask.get_cell_source_id(cell), blocked_land_atlas_coords)
+				valid = false
+			else:
+				build_preview.set_cell(cell, construction_mask.get_cell_source_id(cell), free_land_atlas_coords)
+	return valid
 func try_place(is_blocked):
 	if not ghost_instance:
 		return
