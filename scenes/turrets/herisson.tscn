@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://daiy41eawth0k"]
 
-[ext_resource type="Script" uid="uid://chn6nnmuqif8b" path="res://scripts/herisson.gd" id="1_518lq"]
+[ext_resource type="Script" uid="uid://chn6nnmuqif8b" path="res://scripts/Turrets/herisson.gd" id="1_518lq"]
 [ext_resource type="Texture2D" uid="uid://dnlw8hk30qpyi" path="res://assets/sprites/projectiles/epines.png" id="2_qbpr3"]
 [ext_resource type="Texture2D" uid="uid://cmfn5u2kyfhxl" path="res://assets/sprites/structure/herisson.png" id="3_qbpr3"]
 [ext_resource type="Texture2D" uid="uid://crj4olbxk6321" path="res://assets/UI/AtkSpd.png" id="4_0tnnh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="5_0tnnh"]
 [ext_resource type="Texture2D" uid="uid://dvvbtdiuh5l5a" path="res://assets/UI/HP.png" id="6_mq2e1"]
 [ext_resource type="Texture2D" uid="uid://du1uq1gf663oi" path="res://assets/UI/Portee.png" id="7_0tnnh"]
+
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6b4mt"]
 

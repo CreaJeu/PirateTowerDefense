@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c0kwqqja08e8o"]
 
-[ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/singe.gd" id="1_kbiht"]
-[ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_a13ct"]
+[ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/Turrets/singe.gd" id="1_kbiht"]
+[ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectiles/projectile.tscn" id="2_a13ct"]
 [ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="3_8naym"]
 [ext_resource type="AudioStream" uid="uid://dtphf02hwk6ac" path="res://assets/audio/MonkeyPose01.mp3" id="4_ushai"]
 [ext_resource type="AudioStream" uid="uid://b5g0dyjk7beuw" path="res://assets/audio/MonkeyPose02.mp3" id="5_b0xdb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="9_ada5o"]
 [ext_resource type="Texture2D" uid="uid://crj4olbxk6321" path="res://assets/UI/AtkSpd.png" id="10_dutdn"]
 [ext_resource type="Texture2D" uid="uid://du1uq1gf663oi" path="res://assets/UI/Portee.png" id="11_jcwx8"]
+
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_485p4"]
 

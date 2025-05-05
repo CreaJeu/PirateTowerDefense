@@ -77,6 +77,7 @@ texture = ExtResource("5_eexb2")
 expand_mode = 2
 
 [node name="LabelKills" type="RichTextLabel" parent="HBoxContainer/KillsMCont/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/bold_font_size = 24

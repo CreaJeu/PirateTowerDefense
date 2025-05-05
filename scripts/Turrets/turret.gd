@@ -14,7 +14,8 @@ var current_level = 1
 
 var health: int
 var enemies_in_range: Array[Node2D] = []
-
+var projectile_scene: PackedScene = load("res://scenes/projectiles/projectile.tscn")
+ 
 @onready var fire_timer: Timer = $FiringCooldown
 
 

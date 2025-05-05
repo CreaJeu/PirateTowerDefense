@@ -15,7 +15,7 @@ func _ready():
 	$ConstructionRestriction.add_to_group("obstacles")
 	$FiringArea.connect("body_entered", _on_body_entered)
 	$FiringArea.connect("body_exited", _on_body_exited)
-	projectile_scene 
+	projectile_scene = load("res://scenes/projectiles/projectile.tscn")
 	
 	fire_timer.wait_time = fire_rate
 	fire_timer.start()
