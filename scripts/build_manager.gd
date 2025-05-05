@@ -30,9 +30,6 @@ func _ready() -> void:
 	Signals.obstacle_destroyed.connect(free_area_at)
 
 
-func previsualisation_placement(ghost_intance: Node2D):
-	if not build_mode: return
-	
 	
 	
 
@@ -63,11 +60,12 @@ func cancel_build():
 	ghost_instance = null
 	build_mode = false
 	construction_mask.visible = false
+	build_preview.hide()
 
 func _process(delta):
 	if not build_mode:
 		return
-	
+	build_preview.show()
 	# Move ghost to mouse
 	ghost_instance.global_position = get_global_mouse_position()
 	var valid = update_preview(ghost_instance)
@@ -93,22 +91,21 @@ func _process(delta):
 		cancel_build()
 
 func update_preview(ghost: Node2D) -> bool:
+	print("in update")
 	build_preview.clear()
 	var valid = true
-	if ghost is not Herisson or ghost is not Lama or ghost is not Obstacle or ghost is not Turret: return false
-	var size = ghost.get_size()
-	var width = int(size.x)
-	var height = int(size.y)
+	if ghost is Obstacle: return false
+	
+	if not (ghost is not Herisson or ghost is not Lama or ghost is not Turret): return false;
+	var width = ghost.restriction_width_tiles
+	var height = ghost.restriction_height_tiles
 	var pos = ghost.global_position
-	var rotation = ghost.rotation
-
-	# Adjust position if necessary (e.g., for centered placement)
-	if ghost.has_method("get_preview_offset"):
-		pos += ghost.get_preview_offset()
+	#var rotation = ghost.rotation
 
 	for x in range(width):
 		for y in range(height):
-			var local_offset = Vector2(x, y)
+			# Match logic from can_build_at()
+			var local_offset = Vector2(x, y) - Vector2(width / 2, height / 2) + Vector2(0.5, 0.5)
 			local_offset = local_offset.rotated(rotation)
 			var world_pos = pos + local_offset * construction_mask.rendering_quadrant_size
 			var cell = construction_mask.local_to_map(world_pos)
@@ -119,7 +116,11 @@ func update_preview(ghost: Node2D) -> bool:
 				valid = false
 			else:
 				build_preview.set_cell(cell, construction_mask.get_cell_source_id(cell), free_land_atlas_coords)
+
 	return valid
+	
+	
+	
 func try_place(is_blocked):
 	if not ghost_instance:
 		return
