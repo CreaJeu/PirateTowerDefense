@@ -1,4 +1,4 @@
-class_name Turret
+class_name Singe
 extends StaticBody2D
 
 @export var projectile_scene: PackedScene

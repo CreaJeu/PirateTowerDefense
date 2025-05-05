@@ -4,8 +4,8 @@ extends StaticBody2D
 var fire_rate: float = 1.0 # seconds per shot
 var projectile_speed: float = 500.0
 var is_active: bool = true
-var restriction_width_tiles: int = 7
-var restriction_height_tiles: int = 7
+var restriction_width_tiles: int = 6
+var restriction_height_tiles: int = 6
 var damage: int = 2
 var slow_strength: int = 50
 var slow_duration: int = 2 

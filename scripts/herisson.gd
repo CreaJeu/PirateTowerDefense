@@ -126,14 +126,11 @@ func shake(duration = 0.2, strength = 5.0):
 		tween.tween_property(self, "position", original_position + Vector2(random_x, random_y), 0.05)
 
 
-	# Final tween to return to original position
+	# Final tween to return 	to original position
 	tween.chain().tween_property(self, "position", original_position, 0.1)
 	tween.play()
 
 
-func show_upgrade_menu():
-	$UpgradeMenuPanel.show()
-	
 func upgrade_hp():
 	if current_hp_upgrade >= 5:
 		upgrade_hp_button.disabled = true
@@ -210,6 +207,9 @@ func check_herisson_level():
 		
 	
 
+func show_upgrade_menu():
+	$UpgradeMenuPanel.show()
+	
 
 func _on_cross_pressed() -> void:
 	$UpgradeMenuPanel.hide()

@@ -2,7 +2,7 @@ class_name Topbar
 extends PanelContainer
 
 @onready var button_obstacle = $HBoxContainer/ObstacleMcont/PanelContainer/HBoxContainer/Button
-@onready var button_turret = $HBoxContainer/SingeMcont/PanelContainer/HBoxContainer/Button
+@onready var button_singe = $HBoxContainer/SingeMcont/PanelContainer/HBoxContainer/Button
 @onready var button_herisson = $HBoxContainer/HerissonMcont/PanelContainer/HBoxContainer/Button
 @onready var button_lama = $HBoxContainer/LamaMcont/PanelContainer/HBoxContainer/Button
 
@@ -12,7 +12,7 @@ extends PanelContainer
 
 @export var build_manager: BuildManager
 @export var obstacle_scene: PackedScene
-@export var turret_scene: PackedScene
+@export var singe_scene: PackedScene
 @export var herisson_scene: PackedScene
 @export var lama_scene: PackedScene
 
@@ -23,8 +23,8 @@ func _ready():
 	button_obstacle.pressed.connect(on_button_obstacle)
 	button_obstacle.text = "Obstacle\n("+str(build_manager.obstacle_cost)+")"
 	
-	button_turret.pressed.connect(on_button_turret)
-	button_turret.text = "Singe\n("+str(build_manager.turret_cost)+")"
+	button_singe.pressed.connect(on_button_singe)
+	button_singe.text = "Singe\n("+str(build_manager.singe_cost)+")"
 	
 	button_herisson.pressed.connect(on_button_herisson)
 	button_herisson.text = "Hérisson\n("+str(build_manager.herisson_cost)+")"
@@ -39,15 +39,15 @@ func _ready():
 func update_money(money: int):
 	label_money.text = "[center][b]" + str(money)
 	
-	if build_manager.turret_cost > money:
-		button_turret.disabled = true
+	if build_manager.singe_cost > money:
+		button_singe.disabled = true
 	else:
-		button_turret.disabled = false
+		button_singe.disabled = false
 		
 	if build_manager.herisson_cost > money:
-		button_turret.disabled = true
+		button_herisson.disabled = true
 	else:
-		button_turret.disabled = false
+		button_herisson.disabled = false
 		
 	if build_manager.lama_cost > money:
 		button_lama.disabled = true
@@ -68,8 +68,8 @@ func update_difficulty(new_difficulty: int):
 func on_button_obstacle():
 	build_manager.start_build(obstacle_scene, build_manager.obstacle_cost)
 
-func on_button_turret():
-	build_manager.start_build(turret_scene, build_manager.turret_cost)
+func on_button_singe():
+	build_manager.start_build(singe_scene, build_manager.singe_cost)
 
 func on_button_herisson():
 	build_manager.start_build(herisson_scene, build_manager.herisson_cost)

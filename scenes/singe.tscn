@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://c0kwqqja08e8o"]
 
-[ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/turret.gd" id="1_el7wl"]
-[ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_485p4"]
-[ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="3_485p4"]
-[ext_resource type="Texture2D" uid="uid://cw5w0m2dgj2mm" path="res://assets/UI/Dmg.png" id="4_mqfwu"]
-[ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="5_mqfwu"]
-[ext_resource type="Texture2D" uid="uid://crj4olbxk6321" path="res://assets/UI/AtkSpd.png" id="6_0dv4j"]
-[ext_resource type="Texture2D" uid="uid://cxhdcp85cqtan" path="res://assets/menu/pirate-menu/Images/UI/X.png" id="7_6k4ik"]
-[ext_resource type="Texture2D" uid="uid://du1uq1gf663oi" path="res://assets/UI/Portee.png" id="7_tg0ex"]
-[ext_resource type="AudioStream" uid="uid://dtphf02hwk6ac" path="res://assets/audio/MonkeyPose01.mp3" id="8_eo4u0"]
-[ext_resource type="AudioStream" uid="uid://b5g0dyjk7beuw" path="res://assets/audio/MonkeyPose02.mp3" id="9_6k4ik"]
-[ext_resource type="AudioStream" uid="uid://bhyi1hdgg564n" path="res://assets/audio/MonkeyPose03.mp3" id="10_fp1kq"]
+[ext_resource type="Script" uid="uid://c3i47ndxs386l" path="res://scripts/singe.gd" id="1_ocqpl"]
+[ext_resource type="PackedScene" uid="uid://gxt5ai0b55nd" path="res://scenes/projectile.tscn" id="2_mfqs4"]
+[ext_resource type="Texture2D" uid="uid://c3vfbkm2om0i8" path="res://assets/sprites/structure/Singe.png" id="3_b7658"]
+[ext_resource type="AudioStream" uid="uid://dtphf02hwk6ac" path="res://assets/audio/MonkeyPose01.mp3" id="4_qiuq7"]
+[ext_resource type="AudioStream" uid="uid://b5g0dyjk7beuw" path="res://assets/audio/MonkeyPose02.mp3" id="5_bc2bu"]
+[ext_resource type="AudioStream" uid="uid://bhyi1hdgg564n" path="res://assets/audio/MonkeyPose03.mp3" id="6_dawgf"]
+[ext_resource type="Texture2D" uid="uid://cxhdcp85cqtan" path="res://assets/menu/pirate-menu/Images/UI/X.png" id="7_7fewn"]
+[ext_resource type="Texture2D" uid="uid://cw5w0m2dgj2mm" path="res://assets/UI/Dmg.png" id="8_yu5df"]
+[ext_resource type="Theme" uid="uid://d0tsodlbmy5wp" path="res://assets/menu/pirate-theme.tres" id="9_lldff"]
+[ext_resource type="Texture2D" uid="uid://crj4olbxk6321" path="res://assets/UI/AtkSpd.png" id="10_k0a0s"]
+[ext_resource type="Texture2D" uid="uid://du1uq1gf663oi" path="res://assets/UI/Portee.png" id="11_hle21"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_485p4"]
 
@@ -22,9 +22,9 @@ radius = 18.1108
 resource_local_to_scene = true
 radius = 158.0
 
-[node name="Turret" type="StaticBody2D"]
-script = ExtResource("1_el7wl")
-projectile_scene = ExtResource("2_485p4")
+[node name="Singe" type="StaticBody2D"]
+script = ExtResource("1_ocqpl")
+projectile_scene = ExtResource("2_mfqs4")
 rotation_speed = 20.0
 
 [node name="Button" type="Button" parent="."]
@@ -38,7 +38,7 @@ flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_485p4")
+texture = ExtResource("3_b7658")
 
 [node name="PhysicalShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_485p4")
@@ -58,13 +58,13 @@ shape = SubResource("CircleShape2D_el7wl")
 [node name="SpawnAudioContainer" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SpawnAudioContainer"]
-stream = ExtResource("8_eo4u0")
+stream = ExtResource("4_qiuq7")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SpawnAudioContainer"]
-stream = ExtResource("9_6k4ik")
+stream = ExtResource("5_bc2bu")
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SpawnAudioContainer"]
-stream = ExtResource("10_fp1kq")
+stream = ExtResource("6_dawgf")
 
 [node name="UpgradeMenuPanel" type="PanelContainer" parent="."]
 visible = false
@@ -89,7 +89,7 @@ theme_override_constants/margin_left = 175
 
 [node name="Cross" type="TextureButton" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/MarginContainer"]
 layout_mode = 2
-texture_normal = ExtResource("7_6k4ik")
+texture_normal = ExtResource("7_7fewn")
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": false,
 "pending_changes": {
@@ -118,13 +118,13 @@ visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
-texture = ExtResource("4_mqfwu")
+texture = ExtResource("8_yu5df")
 
 [node name="DamageButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 visible = false
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("5_mqfwu")
+theme = ExtResource("9_lldff")
 text = "Damage bonus"
 alignment = 0
 
@@ -132,13 +132,13 @@ alignment = 0
 texture_filter = 1
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
-texture = ExtResource("6_0dv4j")
+texture = ExtResource("10_k0a0s")
 stretch_mode = 2
 
 [node name="ProjSpeedButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("5_mqfwu")
+theme = ExtResource("9_lldff")
 text = "Projectile speed upgrade (20)"
 alignment = 0
 
@@ -146,13 +146,13 @@ alignment = 0
 texture_filter = 1
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
-texture = ExtResource("7_tg0ex")
+texture = ExtResource("11_hle21")
 stretch_mode = 2
 
 [node name="RangeButton" type="Button" parent="UpgradeMenuPanel/MarginContainer/VSplitContainer/GridContainer"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("5_mqfwu")
+theme = ExtResource("9_lldff")
 text = "Range upgrade (20)"
 alignment = 0
 

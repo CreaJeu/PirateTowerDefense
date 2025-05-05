@@ -7,7 +7,7 @@ extends Node2D
 @export var herisson_scene: PackedScene
 
 @export var obstacle_cost: int = 70
-@export var turret_cost: int = 100
+@export var singe_cost: int = 100
 @export var herisson_cost: int = 70
 @export var lama_cost: int = 120
 
@@ -48,7 +48,7 @@ func start_build(scene: PackedScene, cost: int):
 	ghost_instance.set_collision_layer(0)
 	ghost_instance.set_collision_mask(1)
 	
-	if ghost_instance is Turret or ghost_instance is Herisson or ghost_instance is Lama:
+	if ghost_instance is Singe or ghost_instance is Herisson or ghost_instance is Lama:
 		ghost_instance.is_active = false
 		ghost_instance.get_node("FiringArea/FiringRange").disabled = true
 
@@ -72,7 +72,7 @@ func _process(delta):
 	
 	if ghost_instance is Obstacle:
 		valid = can_build_at(ghost_instance.global_position, 6, 2, ghost_instance.rotation)
-	if ghost_instance is Turret or ghost_instance is Herisson or ghost_instance is Lama:
+	if ghost_instance is Singe or ghost_instance is Herisson or ghost_instance is Lama:
 		var turret_size: Vector2 = ghost_instance.get_size()
 		valid = can_build_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
 		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, ghost_instance.rotation
@@ -96,17 +96,17 @@ func update_preview(ghost: Node2D) -> bool:
 	var valid = true
 	if ghost is Obstacle: return false
 	
-	if not (ghost is not Herisson or ghost is not Lama or ghost is not Turret): return false;
+	if not (ghost is not Herisson or ghost is not Lama or ghost is not Singe): return false;
 	var width = ghost.restriction_width_tiles
 	var height = ghost.restriction_height_tiles
 	var pos = ghost.global_position
-	#var rotation = ghost.rotation
+	var rotation_ghost = ghost.rotation
 
 	for x in range(width):
 		for y in range(height):
 			# Match logic from can_build_at()
 			var local_offset = Vector2(x, y) - Vector2(width / 2, height / 2) + Vector2(0.5, 0.5)
-			local_offset = local_offset.rotated(rotation)
+			local_offset = local_offset.rotated(rotation_ghost)
 			var world_pos = pos + local_offset * construction_mask.rendering_quadrant_size
 			var cell = construction_mask.local_to_map(world_pos)
 
@@ -139,7 +139,7 @@ func try_place(is_blocked):
 	real_instance.global_position = ghost_instance.global_position
 	real_instance.rotation = ghost_instance.rotation
 	
-	if real_instance is Turret or real_instance is Herisson or real_instance is Lama:
+	if real_instance is Singe or real_instance is Herisson or real_instance is Lama:
 		real_instance.place()
 		
 	if real_instance is Obstacle:
@@ -149,7 +149,7 @@ func try_place(is_blocked):
 	
 	if real_instance is Obstacle:
 		reserve_area_at(real_instance.global_position, 6, 2, blocked_land_atlas_coords, real_instance.rotation)
-	if real_instance is Turret or real_instance is Herisson or real_instance is Lama:
+	if real_instance is Singe or real_instance is Herisson or real_instance is Lama:
 		var turret_size: Vector2 = ghost_instance.get_size()
 		reserve_area_at(ghost_instance.global_position - (turret_size/2)*ghost_instance.restriction_width_tiles/2, 
 		ghost_instance.restriction_width_tiles, ghost_instance.restriction_height_tiles, blocked_land_atlas_coords, ghost_instance.rotation
