@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1465yj4wfyf3"]
+
+[ext_resource type="Script" uid="uid://bl3oietq5ntyy" path="res://scripts/Turrets/turret.gd" id="1_b5i8c"]
+
+[node name="Turret" type="StaticBody2D"]
+script = ExtResource("1_b5i8c")
