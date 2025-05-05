@@ -68,6 +68,7 @@ func _physics_process(delta):
 		if on_water:
 			$AnimatedSprite2D.visible = false
 			$BoatSprite.visible = true
+			print("showing boat")
 			if abs(direction.x) > abs(direction.y):
 				if direction.x > 0:
 					$BoatSprite.texture = load("res://assets/sprites/enemy/boat/BateauDroit.png")
@@ -94,14 +95,14 @@ func _physics_process(delta):
 
 				
 func _on_attack_range_body_entered(body):
-	if body is Obstacle or body is Singe or body is Herisson or body is Lama:
+	if body is Obstacle or body is Turret:
 		obstacles_in_range.append(body)
 		if not attack_timer.is_stopped():
 			return
 		attack_timer.start()
 		
 func _on_attack_range_body_exited(body):
-	if body is Obstacle or body is Singe or body is Herisson or body is Lama:
+	if body is Obstacle or body is Turret:
 		obstacles_in_range.erase(body)
 		if obstacles_in_range.is_empty():
 			attack_timer.stop()
@@ -119,7 +120,7 @@ func _on_attack_timer_timeout():
 	attack_obstacle(obstacle)
 		
 func attack_obstacle(obstacle: StaticBody2D):
-	if not (obstacle is Obstacle or obstacle is Singe or obstacle is Herisson or obstacle is Lama):
+	if not (obstacle is Obstacle or obstacle is Turret):
 		return
 	
 	if is_instance_valid(obstacle):

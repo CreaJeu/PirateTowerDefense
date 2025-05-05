@@ -5,8 +5,11 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ct60u"]
 texture = ExtResource("1_v0nkm")
 1:0/0 = 0
+1:0/0/custom_data_0 = "free"
 2:0/0 = 0
+2:0/0/custom_data_0 = "water"
 0:0/0 = 0
+0:0/0/custom_data_0 = "block"
 
 [resource]
 custom_data_layer_0/name = "type"

@@ -9,7 +9,7 @@ extends Node2D
 @export var obstacle_cost: int = 70
 @export var singe_cost: int = 100
 @export var herisson_cost: int = 70
-@export var lama_cost: int = 120
+@export var lama_cost: int = 200
 
 @export var construction_mask: TileMapLayer
 

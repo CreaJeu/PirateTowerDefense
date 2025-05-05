@@ -1,7 +1,7 @@
 extends Turret
 class_name Lama
 
-var damage: int = 2
+var damage: int = 20
 var slow_strength: int = 50
 var slow_duration: int = 2 
 
