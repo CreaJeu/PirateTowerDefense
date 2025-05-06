@@ -8,9 +8,7 @@ func _on_option_pressed() -> void:
 	var instance = OPTIONS.instantiate()
 	instance.Outside_world = $Option
 	add_child(instance)
-	
-	pass # Replace with function body.
+
 	
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-	pass # Replace with function body.

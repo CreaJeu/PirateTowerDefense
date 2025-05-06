@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b61n3ww8i176b"]
+[gd_scene load_steps=25 format=4 uid="uid://b61n3ww8i176b"]
 
 [ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://b6h5pgsyixgqd" path="res://scenes/ground.tscn" id="2_choun"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://7w84b3nw7nnc" path="res://scripts/pumpkin.gd" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://d10vils7u3b5c" path="res://assets/sprites/PUMPKIN1.png" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://cvmj2ud8tqdaf" path="res://assets/sprites/PUMPKIN2.png" id="13_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://cn3wnfphg1psv" path="res://icon.svg" id="15_gqmmt"]
+[ext_resource type="Script" uid="uid://b3toeuwjmnugq" path="res://scripts/main_menu.gd" id="15_yc10j"]
 [ext_resource type="Script" uid="uid://bekno3v27cnwh" path="res://scripts/camera_2d.gd" id="16_jbj1t"]
 [ext_resource type="AudioStream" uid="uid://7u8so154vtye" path="res://assets/audio/Blackmoor Tides Loop.wav" id="17_dp3eg"]
 
@@ -187,6 +189,39 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Exit"
 
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 689.0
+offset_top = 253.0
+offset_right = 689.0
+offset_bottom = 253.0
+script = ExtResource("15_yc10j")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 0
+offset_right = 476.0
+offset_bottom = 468.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Start" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+icon = ExtResource("15_gqmmt")
+
+[node name="Option" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option"
+icon = ExtResource("15_gqmmt")
+
+[node name="Exit" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+icon = ExtResource("15_gqmmt")
+
 [node name="Pumpkin" type="StaticBody2D" parent="."]
 position = Vector2(895, 547)
 script = ExtResource("12_a8y0u")
@@ -214,7 +249,7 @@ volume_db = -20.991
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(915, 476)
+position = Vector2(996, 457)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
@@ -226,3 +261,6 @@ script = ExtResource("16_jbj1t")
 
 [connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/RestartMCont/RestartButton" to="CanvasLayer/GameOverMenu" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/GameOverMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/VBoxContainer/Start" to="CanvasLayer/MainMenu" method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/VBoxContainer/Option" to="CanvasLayer/MainMenu" method="_on_option_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/VBoxContainer/Exit" to="CanvasLayer/MainMenu" method="_on_exit_pressed"]
