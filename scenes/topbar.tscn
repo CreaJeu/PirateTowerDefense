@@ -28,6 +28,7 @@ layout_mode = 2
 [node name="MoneyMCont" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.32
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -88,6 +89,7 @@ vertical_alignment = 1
 [node name="DifficultyMCont" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.88
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -99,10 +101,13 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DifficultyMCont/PanelContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/DifficultyMCont/PanelContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/DifficultyMCont/PanelContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_eexb2")
-expand_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_bql76")
+bbcode_enabled = true
+text = "[center][b]Niveau"
+vertical_alignment = 1
 
 [node name="LabelDifficulty" type="RichTextLabel" parent="HBoxContainer/DifficultyMCont/PanelContainer/HBoxContainer"]
 layout_mode = 2
