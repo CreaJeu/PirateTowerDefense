@@ -20,6 +20,6 @@ texture_margin_bottom = 10.0
 
 [resource]
 default_font = ExtResource("2_t227k")
-default_font_size = 24
+default_font_size = 12
 Button/styles/hover = SubResource("StyleBoxTexture_p7m25")
 Button/styles/normal = SubResource("StyleBoxTexture_0dv4j")
