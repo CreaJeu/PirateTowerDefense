@@ -32,9 +32,9 @@ func _ready():
 	button_lama.pressed.connect(on_button_lama)
 	button_lama.text = "Lama\n("+str(build_manager.lama_cost)+")"
 
-	Signals.enemy_died.connect(update_kills)
-	Signals.difficulty_increased.connect(update_difficulty)
-	update_kills(0)
+	Gamestate.kills_changed.connect(update_kills)
+	Gamestate.difficulty_increased.connect(update_difficulty)
+	update_kills(Gamestate.kills)
 
 func update_money(money: int):
 	label_money.text = "[center][b]" + str(money)

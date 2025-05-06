@@ -59,8 +59,7 @@ func _check_difficulty_increase(_unused: int):
 	if new_difficulty == Gamestate.difficulty_level:
 		return
 		
-	Gamestate.difficulty_level =  new_difficulty
-	Signals.difficulty_increased.emit(new_difficulty)
+	Gamestate.set_difficulty(new_difficulty)
 	
 	# Calculate what the spawn rate should be based on difficulty level
 	var new_spawn_rate = spawn_rate - (Gamestate.difficulty_level * spawn_rate_decrease_amount)

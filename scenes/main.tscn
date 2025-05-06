@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://b61n3ww8i176b"]
 
-[ext_resource type="PackedScene" uid="uid://ber7plm5axbh6" path="res://scenes/water.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://b6h5pgsyixgqd" path="res://scenes/ground.tscn" id="2_choun"]
 [ext_resource type="Script" uid="uid://diwdj5ea861ug" path="res://scripts/enemy_spawner.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://g7hw4bwrx6m8" path="res://scenes/Tiles/preview_masks.tscn" id="3_0ld40"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cuy0rosgbajo6" path="res://scenes/base.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bl5du0khkvx0c" path="res://scenes/obstacle.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c0kwqqja08e8o" path="res://scenes/turrets/singe.tscn" id="8_tipki"]
-[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://duasns07cbm8j" path="res://scripts/game_over_menu.gd" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://daiy41eawth0k" path="res://scenes/turrets/herisson.tscn" id="9_jbj1t"]
 [ext_resource type="Script" uid="uid://bn3o1re510mwy" path="res://scripts/build_manager.gd" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dpya8rmoqejip" path="res://scenes/turrets/lama.tscn" id="10_muem4"]
@@ -159,6 +159,20 @@ bbcode_enabled = true
 text = "[center][b]GAME OVER[b][center]"
 vertical_alignment = 1
 
+[node name="RestartMCont" type="MarginContainer" parent="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/RestartMCont"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -210,4 +224,5 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("16_jbj1t")
 
+[connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/RestartMCont/RestartButton" to="CanvasLayer/GameOverMenu" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverMenu/PanelContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/GameOverMenu" method="_on_exit_button_pressed"]
